@@ -38,6 +38,7 @@
                             echo $a['tanggal_pinjam'];
                         }
                 }?></td>
+            <td><?php echo $kembali['tanggal_balik'] ;?></td>
             <td><?php foreach($all_pinjam as $c){
                         if($kembali['id_aset_pinjam'] == $c['id_aset_pinjam']){
                             echo $c['nama_pegawai'];
@@ -48,21 +49,21 @@
                             echo $d['jabatan'];
                         }
                 }?></td>
-            <td><?php  
+       <!--      <td><?php  
                             foreach($all_barang_aset as $b){
                                 if($pinjam['id_aset'] == $b['id_aset']){
                                     echo $b['nama_aset'].' | '.$pinjam['id_aset'];
                                 }
                             }
-                        ?></td>
+                        ?></td> -->
              <!-- <td><?php echo $row->seri ?></td> -->
-        <!--      <td><?php  
-                            foreach($all_barang_sub as $d){
-                                if($pinjam['id_aset_sub'] == $d['id_aset_sub']){
-                                    echo $b['grup'];
+            <td><?php  
+                            foreach($all_barang_aset as $z){
+                                if($kembali['id_aset'] == $z['id_aset']){
+                                    echo $z['nama_aset'];
                                 }
                             }
-                        ?></td> -->
+                        ?></td>
             <td><?php foreach($all_pinjam as $f){
                         if($kembali['id_aset_pinjam'] == $f['id_aset_pinjam']){
                             echo $f['keterangan'];

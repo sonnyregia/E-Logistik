@@ -57,7 +57,7 @@
             <select id="id_aset_sub" name="id_aset_sub" class="form-control" readonly>
             <option value=""></option>
                <?php 
-                                foreach($all_barang_sub as $sub)
+                                foreach($all_barang_aset_sub as $sub)
                                 {
                                     $selected = ($sub['id_aset_sub'] == $this->input->post('id_aset_sub')) ? ' selected="selected"' : "";
 

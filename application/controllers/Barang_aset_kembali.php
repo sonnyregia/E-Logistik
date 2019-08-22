@@ -62,7 +62,7 @@ class Barang_aset_kembali extends CI_Controller
 
      public function kembalikan() 
     {
-        $this->form_validation->set_rules('terlambat','terlambat','required');
+        $this->form_validation->set_rules('tanggal_balik','tanggal_balik','required');
 
         if($this->form_validation->run())     
         {   
@@ -100,6 +100,7 @@ class Barang_aset_kembali extends CI_Controller
             $this->load->model('Merk_aset_model');
             $this->load->model('Satuan_aset_model');
             
+            $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
             $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
             $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
             $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
