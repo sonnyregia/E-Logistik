@@ -28,10 +28,26 @@
                 <tr>
             <td width="80px"><?php echo ++$start ?></td>
             <!-- <td><?php echo $row->kode_pinjam ?></td> -->
-            <td><?php echo $pinjam['kartu_p'] ;?></td>
-            <td><?php echo $date['tanggal_pinjam'];?></td>
-            <td><?php echo $pinjam['nama_pegawai'] ;?></td>
-            <td><?php echo $pinjam['jabatan'] ;?></td>
+            <td><?php foreach($all_pinjam as $e){
+                        if($kembali['id_aset_pinjam'] == $e['id_aset_pinjam']){
+                            echo $e['kartu_p'];
+                        }
+                }?></td>
+            <td><?php foreach($all_pinjam as $a){
+                        if($kembali['id_aset_pinjam'] == $a['id_aset_pinjam']){
+                            echo $a['tanggal_pinjam'];
+                        }
+                }?></td>
+            <td><?php foreach($all_pinjam as $c){
+                        if($kembali['id_aset_pinjam'] == $c['id_aset_pinjam']){
+                            echo $c['nama_pegawai'];
+                        }
+                }?></td>
+            <td><?php foreach($all_pinjam as $d){
+                        if($kembali['id_aset_pinjam'] == $d['id_aset_pinjam']){
+                            echo $d['jabatan'];
+                        }
+                }?></td>
             <td><?php  
                             foreach($all_barang_aset as $b){
                                 if($pinjam['id_aset'] == $b['id_aset']){
@@ -47,7 +63,11 @@
                                 }
                             }
                         ?></td> -->
-            <td><?php echo $pinjam['keterangan'] ;?></td>
+            <td><?php foreach($all_pinjam as $f){
+                        if($kembali['id_aset_pinjam'] == $f['id_aset_pinjam']){
+                            echo $f['keterangan'];
+                        }
+                }?></td>
             <td style="text-align:center" width="200px">
                 <a href="barang_aset_pinjam/detail/<?php echo $row->id_aset_pinjam ?>" class="btn btn-info btn-sm">detail</a>
                 <a href="barang_aset_pinjam/delete/<?php echo $row->id_aset_pinjam ?>" class="btn btn-danger btn-sm">delete</a>

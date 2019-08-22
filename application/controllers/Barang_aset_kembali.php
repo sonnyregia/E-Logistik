@@ -28,17 +28,17 @@ class Barang_aset_kembali extends CI_Controller
         $this->load->view('v_index', $data);
     }
 
-     public function detail(){
-        $data['judul'] = 'Hasil';
-        $data['konten'] = 'Barang_aset_kembali/barang_aset_kembali_detail';
-        $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
-        $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
-        $data['all_barang_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
-        $data['all_kembali'] = $this->Kembali_model->get_all_barang_kembali();
-        );
+    //  public function detail(){
+    //     $data['judul'] = 'Hasil';
+    //     $data['konten'] = 'Barang_aset_kembali/barang_aset_kembali_detail';
+    //     $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
+    //     $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
+    //     $data['all_barang_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
+    //     $data['all_kembali'] = $this->Kembali_model->get_all_barang_kembali();
+    //     );
              
-        $this->load->view('v_index', $data);
-    }
+    //     $this->load->view('v_index', $data);
+    // }
 
     // public function detail($id){
     //     $data = array(
@@ -210,7 +210,7 @@ class Barang_aset_kembali extends CI_Controller
     public function cek_data()
     {
         $id_aset_pinjam = $this->input->post('id_aset_pinjam');
-        $cek = $this->db->query("SELECT * FROM barang_aset_pinjam as a, barang_aset as b, barang_aset_sub as s WHERE a.id_aset=b.id_aset and b.id_aset=s.id_aset and a.id_aset_sub=s.id_aset_sub and a.id_aset_pinjam='$id_aset_pinjam'")->row();
+        $cek = $this->db->query("SELECT * FROM barang_aset_pinjam as a, barang_aset as b, barang_aset_sub as s, merk_aset as d, satuan_aset as e WHERE a.id_aset=b.id_aset and b.id_aset=s.id_aset and a.id_aset_sub=s.id_aset_sub and s.id_merk_aset=d.id_merk_aset and s.id_satuan_aset=e.id_satuan_aset and a.id_aset_pinjam='$id_aset_pinjam'")->row();
         $data = array(
             'id_aset' => $cek->id_aset,
             'id_aset_sub' => $cek->id_aset_sub,

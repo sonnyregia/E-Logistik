@@ -18,7 +18,7 @@
             <label for="varchar">Jabatan</label>
             <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan" value="<?php echo $jabatan; ?>" />
         </div> -->
-        <label for="varchar">Aset <?php echo form_error('id_aset_sub') ?></label>
+        <label for="varchar">Aset <?php echo form_error('id_aset_pinjam') ?></label>
         <div class="form-group">
             <select id="id_aset_pinjam" name="id_aset_pinjam" class="js-example-basic-single form-control">
                 <option value="">Nomor Kartu | Pegawai | Tanggal</option>
@@ -116,29 +116,29 @@
             <input type="date" class="form-control" name="tanggal_balik" id="tanggal_balik" placeholder="Tanggal Balik" value="<?php echo $tanggal_balik; ?>" />
         </div> -->        
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
-        <input type="hidden" name="id_aset_kembali" value="<?php echo $id_aset_pinjam; ?>" />
-        <input type="hidden" name="tanggal_balik" value="<?php echo date('d F Y') ?>">   
+        <input type="hidden" name="id_aset_kembali" value="<?php echo $id_aset_kembali; ?>" />
+        <input type="hidden" name="tanggal_balik" value="<?php echo date('Y-m-d') ?>">   
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="<?php echo site_url('barang_aset_pinjam') ?>" class="btn btn-default">Cancel</a>
+        <a href="<?php echo site_url('barang_aset_kembali') ?>" class="btn btn-default">Cancel</a>
     </form>
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#id_aset_sub').change(function() {
+    $('#id_aset_pinjam').change(function() {
       var id = $(this).val();
       $.ajax({
         type : 'POST',
-        url : '<?php echo base_url('barang_aset_pinjam/cek_data') ?>',
+        url : '<?php echo base_url('barang_aset_kembali/cek_data') ?>',
         Cache : false,
         dataType: "json",
-        data : 'id_aset_sub='+id,
+        data : 'id_aset_pinjam='+id,
         success : function(resp) {
             $('#kode_aset').val(resp.kode_aset); 
-            $('#nama_aset').val(resp.nama_aset); 
+            $('#id_aset_pinjam').val(resp.id_aset_pinjam); 
             $('#seri').val(resp.seri); 
             $('#id_merk_aset').val(resp.id_merk_aset); 
             $('#id_satuan_aset').val(resp.id_satuan_aset);
-            $('#kodeurut').val(resp.kodeurut); 
+            $('#tanggal_pinjam').val(resp.tanggal_pinjam); 
             $('#id_aset_sub').val(resp.id_aset_sub);
             $('#id_aset').val(resp.id_aset); 
         }
