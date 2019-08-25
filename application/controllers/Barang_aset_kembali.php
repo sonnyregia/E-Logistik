@@ -75,15 +75,15 @@ class Barang_aset_kembali extends CI_Controller
             }
             $SLS=((strtotime($this->input->post('tanggal_pinjam'))-strtotime($tgl))/(60*60*24));
 
-            $from = $this->input->post('tanggal_balik');
-            $date_array=explode("/",$from);
-            $new_date_array=array($date_array[2], $date_array[1], $date_array[0]);
-            $new_date=implode("-",$new_date_array);
+            // $from = $this->input->post('tanggal_balik');
+            // $date_array=explode("/",$from);
+            // $new_date_array=array($date_array[2], $date_array[1], $date_array[0]);
+            // $new_date=implode("-",$new_date_array);
             
             $params = array(
                 'id_aset' => $this->input->post('id_aset'),
                 'id_aset_pinjam' => $this->input->post('id_aset_pinjam'),
-                'tanggal_balik' => $new_date,
+                'tanggal_balik' => $this->input->post('tanggal_balik'),
                 'id_aset_sub' => $this->input->post('id_aset_sub'),
                 'terlambat' => $SLS,
                 // 'seri' => $this->input->post('seri'),
