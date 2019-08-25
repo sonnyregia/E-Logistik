@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Halaman Ligin</title>
+    <title>Halaman Login</title>
     <base href="<?php echo base_url() ?>">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="favicon_16.ico"/>
