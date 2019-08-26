@@ -79,7 +79,8 @@
         </div>
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
         <input type="hidden" name="id_aset_pinjam" value="<?php echo $id_aset_pinjam; ?>" />
-        <input type="hidden" name="tanggal_pinjam" value="<?php echo date('Y-m-d') ?>">   
+        <input type="hidden" name="tanggal_pinjam" value="<?php echo date('Y-m-d') ?>">
+        <input type="hidden" name="status" value="<?php echo $status; ?>" />   
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="<?php echo site_url('barang_aset_pinjam') ?>" class="btn btn-default">Cancel</a>
     </form>

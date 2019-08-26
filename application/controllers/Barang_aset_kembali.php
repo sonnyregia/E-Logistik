@@ -92,6 +92,10 @@ class Barang_aset_kembali extends CI_Controller
             $this->db->set('grup',1);
             $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
             $this->db->update('barang_aset_sub');
+
+            $this->db->set('status',0);
+            $this->db->where('id_aset_pinjam',$this->input->post('id_aset_pinjam'));
+            $this->db->update('barang_aset_pinjam');
             redirect('barang_aset_kembali');
         }
         else

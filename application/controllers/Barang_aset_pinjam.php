@@ -86,7 +86,7 @@ class Barang_aset_pinjam extends CI_Controller
                 'nama_pegawai' => $this->input->post('nama_pegawai'),
                 'jabatan' => $this->input->post('jabatan'),
                 'keterangan' => $this->input->post('keterangan'),
-                // 'seri' => $this->input->post('seri'),
+                'status' => 1,
             );
             $pinjam_id = $this->Pinjam_model->add_pinjam($params);
             $this->db->set('grup',0);

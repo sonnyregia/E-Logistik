@@ -26,10 +26,13 @@
                                 foreach($all_pinjam as $pinjam)
                                 {
                                     $selected = ($pinjam['id_aset_pinjam'] == $this->input->post('id_aset_pinjam')) ? ' selected="selected"' : "";
-
-                                    echo '<option value="'.$pinjam['id_aset_pinjam'].'" '.$selected.'>'.$pinjam['kartu_p'].' | '.$pinjam['nama_pegawai'].' | '.$pinjam['tanggal_pinjam'].'</option>';
+                                    foreach($all_barang_aset as $aset){
+                                        if($pinjam['id_aset'] == $aset['id_aset'] && $pinjam['status']==1){
+                                    echo '<option value="'.$pinjam['id_aset_pinjam'].'" '.$selected.'>'.$pinjam['kartu_p'].' | '.$pinjam['nama_pegawai'].' | '.$aset['nama_aset'].'</option>';
+                                        }
+                                    }
                                 } 
-                                ?>  
+                                ?>            
             </select>
         </div>
        <!--  <div class="form-group">
