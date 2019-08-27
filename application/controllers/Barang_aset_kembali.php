@@ -60,26 +60,14 @@ class Barang_aset_kembali extends CI_Controller
     //     $this->load->view('v_index', $data);
     // }
 
-     public function kembalikan() 
-    {
+    public function kembalikan() {
         $this->form_validation->set_rules('tanggal_balik','tanggal_balik','required');
 
         if($this->form_validation->run())     
         {   
-
-            $this->db->where('id_aset_pinjam',$id);
-            $query=$this->db->get('barang_aset_pinjam')->result();
-            foreach ($query as $row)
-            {
-               $tgl=$row->tanggal_pinjam;   
-            }
-            $SLS=((strtotime($this->input->post('tanggal_pinjam'))-strtotime($tgl))/(60*60*24));
-
-            // $from = $this->input->post('tanggal_balik');
-            // $date_array=explode("/",$from);
-            // $new_date_array=array($date_array[2], $date_array[1], $date_array[0]);
-            // $new_date=implode("-",$new_date_array);
-            
+            $awal = $this->input->post('tanggal_pinjam');
+            $akhir = $this->input->post('tanggal_balik')
+                  
             $params = array(
                 'id_aset' => $this->input->post('id_aset'),
                 'id_aset_pinjam' => $this->input->post('id_aset_pinjam'),
