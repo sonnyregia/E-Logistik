@@ -66,14 +66,14 @@ class Barang_aset_kembali extends CI_Controller
         if($this->form_validation->run())     
         {   
             $awal = $this->input->post('tanggal_pinjam');
-            $akhir = $this->input->post('tanggal_balik')
+            $akhir = $this->input->post('tanggal_balik');
                   
             $params = array(
                 'id_aset' => $this->input->post('id_aset'),
                 'id_aset_pinjam' => $this->input->post('id_aset_pinjam'),
                 'tanggal_balik' => $this->input->post('tanggal_balik'),
                 'id_aset_sub' => $this->input->post('id_aset_sub'),
-                'terlambat' => $SLS,
+                'terlambat' => ((abs(strtotime($akhir) - strtotime($awal)))/(60*60*24))
                 // 'seri' => $this->input->post('seri'),
             );
             $kembali_id = $this->Kembali_model->add_kembali($params);

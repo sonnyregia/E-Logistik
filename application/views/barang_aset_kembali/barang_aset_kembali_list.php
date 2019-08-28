@@ -38,7 +38,9 @@
                             echo $a['tanggal_pinjam'];
                         }
                 }?></td>
-            <td><?php echo $kembali['tanggal_balik'] ;?></td>
+            <?php $oridate=$kembali['tanggal_balik'];
+                $date=date("d-M-Y",strtotime($oridate));?>
+            <td><?php echo $date ;?></td>
             <td><?php foreach($all_pinjam as $c){
                         if($kembali['id_aset_pinjam'] == $c['id_aset_pinjam']){
                             echo $c['nama_pegawai'];

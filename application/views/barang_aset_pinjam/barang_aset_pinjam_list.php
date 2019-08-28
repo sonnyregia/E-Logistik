@@ -20,6 +20,7 @@
                <!--  <th>Kode Pinjam</th> -->
                 <th>Nomor Kartu</th>
                 <th>Tanggal Pinjam</th>
+                <th>Tanggal Balik</th>
                 <th>Pegawai</th>
         <th>Jabatan</th>
         <th>Aset Barang</th>
@@ -38,7 +39,12 @@
             <td width="80px"><?php echo ++$start ?></td>
             <!-- <td><?php echo $row->kode_pinjam ?></td> -->
             <td><?php echo $pinjam['kartu_p'] ;?></td>
-            <td><?php echo $pinjam['tanggal_pinjam'];?></td>
+            <?php $oridate=$pinjam['tanggal_pinjam'];
+                $date=date("d-M-Y",strtotime($oridate));?>
+            <td><?php echo $date;?></td>
+            <?php $oridate2=$pinjam['tgl_balik'];
+                $date2=date("d-M-Y",strtotime($oridate2));?>
+            <td><?php echo $date2;?></td>
             <td><?php echo $pinjam['nama_pegawai'] ;?></td>
             <td><?php echo $pinjam['jabatan'] ;?></td>
             <td><?php  

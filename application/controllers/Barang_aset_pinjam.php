@@ -69,18 +69,18 @@ class Barang_aset_pinjam extends CI_Controller
             // $date_array=explode("/",$from);
             // $new_date_array=array($date_array[2], $date_array[1], $date_array[0]);
             // $new_date=implode("-",$new_date_array);
-            // $t= $this->input->post('tanggal_balik');  
-            //             $s=substr($t,0,2);
-            //             $s1=substr($t,3,2);
-            //             $s2=substr($t,6,6);
-            //              $s3=$s2."/".$s.'/'.$s1;
+            $t= $this->input->post('tgl_balik');  
+                        $s=substr($t,0,2);
+                        $s1=substr($t,3,2);
+                        $s2=substr($t,6,6);
+                         $s3=$s2."/".$s.'/'.$s1;
 
             $tgl=date('y-m-d');
 
             $params = array(
                 'id_aset' => $this->input->post('id_aset'),
-                'tanggal_pinjam' => $this->input->post('tanggal_pinjam'),
-                // 'tanggal_balik' => $this->input->post('tanggal_balik'),
+                'tanggal_pinjam' => $tgl,
+                'tgl_balik' => $s3,
                 'id_aset_sub' => $this->input->post('id_aset_sub'),
                 'kartu_p' => $this->input->post('kartu_p'),
                 'nama_pegawai' => $this->input->post('nama_pegawai'),

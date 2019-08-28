@@ -21,7 +21,7 @@
         <label for="varchar">Aset <?php echo form_error('id_aset_pinjam') ?></label>
         <div class="form-group">
             <select id="id_aset_pinjam" name="id_aset_pinjam" class="js-example-basic-single form-control">
-                <option value="">Nomor Kartu | Pegawai | Tanggal</option>
+                <option value="">Nomor Kartu | Pegawai | Nama Aset</option>
                  <?php 
                                 foreach($all_pinjam as $pinjam)
                                 {
@@ -120,7 +120,7 @@
         </div> -->        
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
         <input type="hidden" name="id_aset_kembali" value="<?php echo $id_aset_kembali; ?>" />
-        <input type="hidden" name="tanggal_balik" value="<?php echo date('Y-m-d') ?>">   
+        <input type="hidden" name="tanggal_balik">   
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="<?php echo site_url('barang_aset_kembali') ?>" class="btn btn-default">Cancel</a>
     </form>

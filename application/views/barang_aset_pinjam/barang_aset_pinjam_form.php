@@ -69,17 +69,17 @@
                                 ?>  
             </select>
         </div>
-       <!--  <div class="form-group">
-            <label for="varchar">Tanggal Balik <?php echo form_error('tanggal_balik') ?></label>
-            <input type="date" class="form-control" name="tanggal_balik" id="tanggal_balik" placeholder="Tanggal Balik" value="<?php echo $tanggal_balik; ?>" />
-        </div> -->        
+        <div class="form-group">
+            <label for="varchar">Tgl Balik <?php echo form_error('tgl_balik') ?></label>
+            <input data-provide="datepicker" class="bootstrap-datepicker form-control" name="tgl_balik" id="tgl_balik" placeholder="Tgl Balik" value="<?php echo $tgl_balik; ?>" />
+        </div>        
         <div class="form-group">
             <label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
             <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
         </div>
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
         <input type="hidden" name="id_aset_pinjam" value="<?php echo $id_aset_pinjam; ?>" />
-        <input type="hidden" name="tanggal_pinjam" value="<?php echo date('Y-m-d') ?>">
+        <input type="hidden" name="tanggal_pinjam">
         <input type="hidden" name="status" value="<?php echo $status; ?>" />   
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="<?php echo site_url('barang_aset_pinjam') ?>" class="btn btn-default">Cancel</a>
