@@ -34,7 +34,7 @@
                       <a href="barang_aset_kembali" class="list-group-item"> Data Aset Kembali</a>
                       <a href="satuan_aset" class="list-group-item"> Satuan Aset</a>
                       <a href="merk_aset" class="list-group-item"> Merk Aset</a>
-                      <a href="ruang" class="list-group-item"> Lokasi Aset</a>
+                      <a href="ruang" class="list-group-item"> UPB</a>
                      <!--  <a href="merk_barang" class="list-group-item"> Merk Barang</a>
                       <a href="satuan_barang" class="list-group-item"> Satuan Barang</a> -->
                       

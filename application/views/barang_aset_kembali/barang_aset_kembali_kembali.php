@@ -101,7 +101,7 @@
         </div>
         <div class="form-group">
             <label for="varchar">Tanggal Pinjam </label>
-            <select id="tanggal_pinjam" name="tanggal_pinjam" class="form-control" readonly>
+            <select id="tanggal_pinjam" class="form-control" readonly>
             <option value=""></option>
                <?php 
                                 foreach($all_pinjam as $pnj)
@@ -120,7 +120,7 @@
         </div> -->        
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
         <input type="hidden" name="id_aset_kembali" value="<?php echo $id_aset_kembali; ?>" />
-        <input type="hidden" name="tanggal_balik">   
+        <input type="hidden" name="tanggal_balik" value="<?php echo date('Y-m-d') ?>">   
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="<?php echo site_url('barang_aset_kembali') ?>" class="btn btn-default">Cancel</a>
     </form>

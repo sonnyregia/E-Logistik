@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Agu 2019 pada 10.32
+-- Waktu pembuatan: 29 Agu 2019 pada 10.49
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -74,13 +74,11 @@ INSERT INTO `barang_aset` (`id_aset`, `kode_aset`, `nama_aset`) VALUES
 CREATE TABLE `barang_aset_kembali` (
   `id_aset_kembali` int(11) NOT NULL,
   `kode_kembali` varchar(20) NOT NULL,
-  `tanggal_balik` varchar(20) NOT NULL,
-  `kode_pinjam` varchar(20) NOT NULL,
-  `kode_aset` varchar(20) NOT NULL,
-  `seri` varchar(10) NOT NULL,
-  `nama_pegawai` varchar(20) NOT NULL,
-  `jabatan` varchar(10) NOT NULL,
-  `keterangan` text NOT NULL,
+  `tanggal_balik` date NOT NULL,
+  `id_aset_pinjam` int(11) NOT NULL,
+  `id_aset` int(11) NOT NULL,
+  `id_aset_sub` int(11) NOT NULL,
+  `terlambat` text NOT NULL,
   `kartu_b` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -88,8 +86,13 @@ CREATE TABLE `barang_aset_kembali` (
 -- Dumping data untuk tabel `barang_aset_kembali`
 --
 
-INSERT INTO `barang_aset_kembali` (`id_aset_kembali`, `kode_kembali`, `tanggal_balik`, `kode_pinjam`, `kode_aset`, `seri`, `nama_pegawai`, `jabatan`, `keterangan`, `kartu_b`) VALUES
-(1, 'KMB0001', '25 July 2019', 'PJM001', '3.02.01.04.001', '001', 'Dany', 'Staf Keum', '-', '');
+INSERT INTO `barang_aset_kembali` (`id_aset_kembali`, `kode_kembali`, `tanggal_balik`, `id_aset_pinjam`, `id_aset`, `id_aset_sub`, `terlambat`, `kartu_b`) VALUES
+(3, '', '2019-08-29', 13, 4, 6, '0', ''),
+(4, '', '2019-08-29', 14, 5, 7, '0', ''),
+(5, '', '2019-08-29', 15, 4, 6, '0', ''),
+(6, '', '0000-00-00', 14, 5, 7, '0', ''),
+(7, '', '2019-08-29', 14, 5, 7, '0', ''),
+(8, '', '2019-08-29', 13, 4, 6, '0', '');
 
 -- --------------------------------------------------------
 
@@ -105,8 +108,10 @@ CREATE TABLE `barang_aset_pinjam` (
   `nama_pegawai` varchar(50) NOT NULL,
   `keterangan` text NOT NULL,
   `jabatan` varchar(50) NOT NULL,
-  `tanggal_pinjam` varchar(20) NOT NULL,
+  `tanggal_pinjam` date NOT NULL,
+  `tgl_balik` date NOT NULL,
   `kartu_p` varchar(20) NOT NULL,
+  `seri` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -114,8 +119,10 @@ CREATE TABLE `barang_aset_pinjam` (
 -- Dumping data untuk tabel `barang_aset_pinjam`
 --
 
-INSERT INTO `barang_aset_pinjam` (`kode_pinjam`, `id_aset_pinjam`, `id_aset`, `id_aset_sub`, `nama_pegawai`, `keterangan`, `jabatan`, `tanggal_pinjam`, `kartu_p`, `status`) VALUES
-('', 2, 4, 6, 'sony', '-', 'staf keum', '--20 August 2019', '1', '0');
+INSERT INTO `barang_aset_pinjam` (`kode_pinjam`, `id_aset_pinjam`, `id_aset`, `id_aset_sub`, `nama_pegawai`, `keterangan`, `jabatan`, `tanggal_pinjam`, `tgl_balik`, `kartu_p`, `seri`, `status`) VALUES
+('', 13, 4, 6, 'sonny', '-', 'staf keum', '2019-08-27', '2019-08-28', '1', '', '0'),
+('', 14, 5, 7, 'dany', '-', 'staf keum', '2019-08-28', '2019-08-29', '2', '', '0'),
+('', 15, 4, 6, 'dany', '-', 'staf keum', '2019-08-29', '2019-08-30', '4', '', '0');
 
 -- --------------------------------------------------------
 
@@ -327,8 +334,16 @@ INSERT INTO `merk_barang` (`id_merk`, `merk_barang`) VALUES
 
 CREATE TABLE `ruang` (
   `id_ruang` int(11) NOT NULL,
-  `nama_ruang` varchar(30) NOT NULL
+  `nama_ruang` varchar(50) NOT NULL,
+  `kode_ruang` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ruang`
+--
+
+INSERT INTO `ruang` (`id_ruang`, `nama_ruang`, `kode_ruang`) VALUES
+(1, 'Ruang IT', 'A.1');
 
 -- --------------------------------------------------------
 
@@ -340,8 +355,7 @@ CREATE TABLE `ruang_detail` (
   `id_ruang_detail` int(11) NOT NULL,
   `id_aset` int(11) NOT NULL,
   `id_aset_sub` int(11) NOT NULL,
-  `id_satuan_aset` int(11) NOT NULL,
-  `id_merk_aset` int(11) NOT NULL,
+  `pemegang` varchar(100) NOT NULL,
   `id_ruang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -534,13 +548,13 @@ ALTER TABLE `barang_aset`
 -- AUTO_INCREMENT untuk tabel `barang_aset_kembali`
 --
 ALTER TABLE `barang_aset_kembali`
-  MODIFY `id_aset_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_aset_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_aset_pinjam`
 --
 ALTER TABLE `barang_aset_pinjam`
-  MODIFY `id_aset_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_aset_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_aset_pinjam_detail`
@@ -594,7 +608,7 @@ ALTER TABLE `merk_barang`
 -- AUTO_INCREMENT untuk tabel `ruang`
 --
 ALTER TABLE `ruang`
-  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruang_detail`

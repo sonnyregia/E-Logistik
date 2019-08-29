@@ -16,7 +16,7 @@ $rs = $data->row();
 			</thead>
 			<tbody>
 				<?php 
-				$sql = $this->db->query("SELECT * FROM barang_aset as a,barang_aset_sub as b where a.nama_aset=b.nama_aset and a.kode_aset='$rs->kode_aset' ");
+				$sql = $this->db->query("SELECT * FROM barang_aset as a,barang_aset_sub as b where a.id_aset=b.id_aset and a.id_aset='$rs->kode_aset' ");
 				$no = 1;
 				foreach ($sql->result() as $row) {
 				 ?>
