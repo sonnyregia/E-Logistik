@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/select2.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <form action="<?php echo $action; ?>" method="post">
         <div class="form-group">
             <!-- <input type="hidden" class="form-control" name="kodeurut" value="<?php echo $kodeurut; ?>" readonly/> -->
         
             <label for="varchar">Nama Aset <?php echo form_error('nama_aset') ?></label>
-            <select name="id_aset" class="form-control">
-                <option value="<?php echo $id_aset ?>"><?php echo $nama_aset ?></option>
+            <select name="id_aset" class="js-example-basic-single form-control">
+                <option value="<?php echo $id_aset ?>">Nama Aset</option>
                 <?php 
                 $sql = $this->db->get('barang_aset');
                 foreach ($sql->result() as $row) {
@@ -31,7 +34,7 @@
         </div>
         <div class="form-group">
             <label for="varchar">Satuan Aset <?php echo form_error('satuan_aset') ?></label>
-            <select name="id_satuan_aset" class="form-control">
+            <select name="id_satuan_aset" class="js-example-basic-single form-control">
                 <option value="<?php echo $id_satuan_aset ?>">Satuan</option>
                 <?php 
                 $sql = $this->db->get('satuan_aset');
@@ -63,3 +66,8 @@
         <button type="submit" class="btn btn-primary">Create</button> 
         <a href="<?php echo site_url('barang_aset_sub') ?>" class="btn btn-default">Cancel</a>
     </form>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>

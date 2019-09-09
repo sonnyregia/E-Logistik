@@ -69,12 +69,12 @@
                     <li class="collapse" id="demo6">
                       <a href="barang_aset" class="list-group-item"> Data Aset</a>
                       <a href="barang_aset_sub" class="list-group-item"> Data Aset Sub</a>
-                      <a href="barang_aset_download" class="list-group-item"> Data Aset Master</a>
+                    <!--   <a href="barang_aset_download" class="list-group-item"> Data Aset Master</a> -->
                       <a href="barang_aset_pinjam" class="list-group-item"> Data Aset Pinjam</a>
                       <a href="barang_aset_kembali" class="list-group-item"> Data Aset Kembali</a>
                       <a href="satuan_aset" class="list-group-item"> Satuan Aset</a>
                       <a href="merk_aset" class="list-group-item"> Merk Aset</a>
-                      <a href="ruang" class="list-group-item"> Lokasi Aset</a>
+                     <!--  <a href="ruang" class="list-group-item"> Lokasi Aset</a> -->
                      <!--  <a href="merk_barang" class="list-group-item"> Merk Barang</a>
                       <a href="satuan_barang" class="list-group-item"> Satuan Barang</a> -->
                       

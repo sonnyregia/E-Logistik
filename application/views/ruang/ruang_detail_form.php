@@ -1,34 +1,42 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/select2.min.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-        <!--   <div class="form-group">
+<form action="<?php echo $action; ?>" method="post">
+      <!--   <div class="form-group">
             <label for="varchar">Kode Pinjam <?php echo form_error('kode_pinjam') ?></label>
             <input type="text" class="form-control" name="kode_pinjam" id="kode_pinjam" placeholder="Kode Pinjam" value="<?php echo $kode_pinjam; ?>" readonly/>
         </div> -->
+       <!--  <div class="form-group">
+            <label for="varchar">ID Ruang</label>
+            <input type="text" class="form-control" name="id_ruang"  placeholder="ID Ruang" value="<?php echo $id_ruang; ?>" disabled="disabled"/>
+            <input type="hidden" class="form-control" name="id_ruang" value="<?php echo $id_ruang; ?>"/>
+        </div> -->
         <div class="form-group">
-            <label for="varchar">Nomor Kartu <?php echo form_error('kartu_p') ?></label>
-            <input type="text" class="form-control" name="kartu_p" id="kartu_p" placeholder="Nomor Kartu" value="<?php echo $kartu_p; ?>" />
-        </div>
-        <div class="form-group">
-            <label for="varchar">Nama Pegawai <?php echo form_error('nama_pegawai') ?></label>
-            <input type="text" class="form-control" name="nama_pegawai" id="nama_pegawai" placeholder="Nama Pegawai" value="<?php echo $nama_pegawai; ?>" />
-        </div>
-        <div class="form-group">
-            <label for="varchar">Jabatan</label>
-            <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan" value="<?php echo $jabatan; ?>" />
+            <label for="varchar">Ruang <?php echo form_error('id_ruang') ?></label>
+            <select name="id_ruang" class="js-example-basic-single form-control">
+            <option value="">Nama Ruang | Kode Ruang </option>
+               <?php 
+                                foreach($all_ruang as $ruang)
+                                {
+                                    $selected = ($ruang['id_ruang'] == $this->input->post('id_ruang')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$ruang['id_ruang'].'" '.$selected.'>'.$ruang['nama_ruang'].' | '.$ruang['kode_ruang'].'</option>';
+                                } 
+                                ?>  
+            </select>
+           
         </div>
         <label for="varchar">Aset <?php echo form_error('id_aset_sub') ?></label>
         <div class="form-group">
             <select id="id_aset_sub" name="id_aset_sub" class="js-example-basic-single form-control">
-                <option value="">Nama Aset | Kode Aset | NUP</option>
+                <option value="">Nama Aset | Kode Aset | NUP | Detail</option>
                 <?php 
                                 foreach($all_barang_aset_sub as $sub)
                                 {
                                     $selected = ($sub['id_aset_sub'] == $this->input->post('id_aset_sub')) ? ' selected="selected"' : "";
                                     foreach($all_barang_aset as $barang){
                                         if($sub['id_aset'] == $barang['id_aset'] && $sub['grup']==1){
-                                            echo '<option value="'.$sub['id_aset_sub'].'" '.$selected.'>'.$barang['nama_aset'].' | '.$barang['kode_aset'].' | '.$sub['seri'].' </option>';
+                                            echo '<option value="'.$sub['id_aset_sub'].'" '.$selected.'>'.$barang['nama_aset'].' | '.$barang['kode_aset'].' | '.$sub['seri'].' | '.$sub['detail_aset'].' </option>';
                                         }
                                     }
                                 } 
@@ -42,7 +50,7 @@
         </div>
         <div class="form-group">
             <label for="varchar">Merk Aset </label>
-            <select id="id_merk_aset" class="form-control" readonly>
+            <select id="id_merk_aset" name="id_merk_aset" class="form-control" readonly>
             <option value=""></option>
                <?php 
                                 foreach($all_merk_aset as $merk)
@@ -57,7 +65,7 @@
         </div>
         <div class="form-group">
             <label for="varchar">Satuan Aset </label>
-           <select id="id_satuan_aset" class="form-control" readonly>
+           <select id="id_satuan_aset" name="id_satuan_aset" class="form-control" readonly>
             <option value=""></option>
                <?php 
                                 foreach($all_satuan_aset as $satuan)
@@ -68,21 +76,15 @@
                                 } 
                                 ?>  
             </select>
-        </div>
+        </div>       
         <div class="form-group">
-            <label for="varchar">Tgl Balik <?php echo form_error('tgl_balik') ?></label>
-            <input data-provide="datepicker" class="bootstrap-datepicker form-control" name="tgl_balik" id="tgl_balik" placeholder="Tgl Balik" value="<?php echo $tgl_balik; ?>" />
-        </div>        
-        <div class="form-group">
-            <label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
-            <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
+            <label for="varchar">Pemegang <?php echo form_error('pemegang') ?></label>
+            <input type="text" class="form-control" name="pemegang" id="pemegang" placeholder="Pemegang" value="<?php echo $pemegang; ?>" />
         </div>
         <!-- <input type="hidden" name="status" value="<?php echo $status; ?>" /> -->
-        <input type="hidden" name="id_aset_pinjam" value="<?php echo $id_aset_pinjam; ?>" />
-        <input type="hidden" name="tanggal_pinjam">
-        <input type="hidden" name="status" value="<?php echo $status; ?>" />   
+        <input type="hidden" name="id_ruang_detail" value="<?php echo $id_ruang_detail; ?>" />  
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="<?php echo site_url('barang_aset_pinjam') ?>" class="btn btn-default">Cancel</a>
+        <a href="<?php echo site_url('ruang') ?>" class="btn btn-default">Cancel</a>
     </form>
 
 <script type="text/javascript">

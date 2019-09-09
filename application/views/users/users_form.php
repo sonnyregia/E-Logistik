@@ -17,7 +17,7 @@
             <select name="level" class="form-control">
                 <option value="<?php echo $level ?>"><?php echo $level ?></option>
                 <option value="manajemen">manajemen</option>
-                <option value="staff">staff</option>
+                <option value="staff">Pengolah Bahan Analis Logistik</option>
                 <!-- <option value="supplier">supplier</option> -->
             </select>
         </div>

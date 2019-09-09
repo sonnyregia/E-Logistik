@@ -29,7 +29,7 @@ class Barang_aset_download extends CI_Controller
         $data = array(
             'konten' => 'barang_aset_download/barang_aset_download_detail',
             'judul' => ' Barang Aset Master',
-            'data' => $this->db->query("SELECT * FROM barang_aset where kode_aset='$kode_detail'"),
+            'data' => $this->db->query("SELECT * FROM barang_aset where id_aset='$kode_detail'"),
         );
         $this->load->view('v_index', $data);
     }

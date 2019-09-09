@@ -2,7 +2,8 @@
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('ruang/tambah_upb'),'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('ruang/tambah_upb'),'Tambah UPB', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('ruang_detail/tambah_detail_upb'),'Tambah Detail UPB', 'class="btn btn-info"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -55,13 +56,16 @@
   <!--           <td><?php echo $barang->penguasaan ?></td>
             <td><?php echo $barang->keterangan ?></td> -->
             <td style="text-align:center" width="200px">
-                <?php 
-                // echo anchor(site_url('barang_aset/detail/'.$barang->id_aset),'Detail'); 
-                // echo ' | ';
+                <a href="<?php echo site_url('ruang_detail/detail/'.$ruang['id_ruang']); ?>" class="btn btn-primary btn-xs"><span class="fa fa-pencil"></span> Detail</a>
+                <a href="<?php echo site_url('ruang/update/'.$ruang['id_ruang']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                <a href="<?php echo site_url('ruang_detail/cetak/'.$ruang['id_ruang']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
+                <!-- <?php 
+                echo anchor(site_url('ruang_detail/index/?id_ruang='.$ruang['id_ruang']),'Detail'); 
+                echo ' | ';
                 echo anchor(site_url('barang_aset_sub/update/'.$ruang['id_ruang']),'Update'); 
                 echo ' | '; 
                 echo anchor(site_url('barang_aset_sub/delete/'.$ruang['id_ruang']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
-                ?>
+                ?> -->
             </td>
         </tr>
                 <?php

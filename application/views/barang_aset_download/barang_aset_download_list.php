@@ -29,7 +29,7 @@
                     <td><?php echo $row->nama_aset; ?></td>
 
                     <td>
-                        <a href="barang_aset_download/detail/<?php echo $row->kode_aset ?>" class="btn btn-info btn-sm">detail</a>
+                        <a href="barang_aset_download/detail/<?php echo $row->id_aset ?>" class="btn btn-info btn-sm">detail</a>
                        <!--  <a href="barang_aset_download/hapus/<?php echo $row->kode_aset ?>" class="btn btn-danger btn-sm" onclick="javasciprt: return confirm('Are You Sure ?')">hapus</a> -->
                          <!-- <a href="barang_aset_download/cetak/<?php echo $row->kode_aset ?>" target="_blank" class="btn btn-success btn-sm">cetak</a> -->
                     </td>

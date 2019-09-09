@@ -1,13 +1,13 @@
 <form action="<?php echo $action; ?>" method="post">
         <div class="form-group">
             <label for="varchar">Nama Aset <?php echo form_error('nama_aset') ?></label>
-            <select name="nama_aset" class="form-control">
-                <option value="<?php echo $nama_aset ?>"><?php echo $nama_aset ?></option>
+            <select name="id_aset" class="form-control">
+                <option value="<?php echo $id_aset ?>"><?php echo $id_aset ?></option>
                 <?php 
                 $sql = $this->db->get('barang_aset');
                 foreach ($sql->result() as $row) {
                  ?>
-                <option value="<?php echo $row->nama_aset ?>"><?php echo $row->nama_aset ?></option>
+                <option value="<?php echo $row->id_aset ?>"><?php echo $row->nama_aset ?></option>
             <?php } ?>
             </select>
         </div>

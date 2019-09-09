@@ -113,7 +113,7 @@ class Barang_aset_sub extends CI_Controller
                 'action' => site_url('barang_aset_sub/update_action'),
 		'id_aset_sub' => set_value('id_aset_sub', $row->id_aset_sub),
 		// 'kode_aset' => set_value('kode_aset', $row->kode_aset),
-		'nama_aset' => set_value('nama_aset', $row->nama_aset),
+		'id_aset' => set_value('id_aset', $row->id_aset),
         'seri' => set_value('seri', $row->seri),
         'tahun' => set_value('tahun', $row->tahun),
         'merk_aset' => set_value('merk_aset', $row->merk_aset),
@@ -143,7 +143,7 @@ class Barang_aset_sub extends CI_Controller
             
             $data = array(
         // 'kode_aset' => $this->input->post('kode_aset',TRUE),
-        'nama_aset' => $this->input->post('nama_aset',TRUE),
+        'id_aset' => $this->input->post('id_aset',TRUE),
         'tahun' => $this->input->post('tahun',TRUE),
         'seri' => $this->input->post('seri',TRUE),
         'merk_aset' => $this->input->post('merk_aset',TRUE),
@@ -174,7 +174,7 @@ class Barang_aset_sub extends CI_Controller
 
              $data = array(
         // 'kode_aset' => $this->input->post('kode_aset',TRUE),
-        'nama_aset' => $this->input->post('nama_aset',TRUE),
+        'id_aset' => $this->input->post('id_aset',TRUE),
         'tahun' => $this->input->post('tahun',TRUE),
         'seri' => $this->input->post('seri',TRUE),
         'merk_aset' => $this->input->post('merk_aset',TRUE),

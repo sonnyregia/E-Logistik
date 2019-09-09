@@ -8,15 +8,16 @@ $rs = $data->row();
 				<tr>
 					<th>No.</th>
 					<th>Kode Aset</th>
-					<th>Seri</th>
+					<th>NUP</th>
 					<th>Nama Aset</th>
+					<th>Uraian</th>
 					<th>Tahun Peroleh</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
-				$sql = $this->db->query("SELECT * FROM barang_aset as a,barang_aset_sub as b where a.id_aset=b.id_aset and a.id_aset='$rs->kode_aset' ");
+				$sql = $this->db->query("SELECT * FROM barang_aset as a,barang_aset_sub as b where a.id_aset=b.id_aset and a.id_aset='$rs->id_aset' ");
 				$no = 1;
 				foreach ($sql->result() as $row) {
 				 ?>
@@ -26,6 +27,7 @@ $rs = $data->row();
 					<td><?php echo $row->seri; ?></td>
 					
 					<td><?php echo $row->nama_aset; ?></td>
+					<td><?php echo $row->detail_aset; ?></td>
 					<td><?php echo $row->tahun; ?></td>
 					<td>
                         <a href="barang_aset_download/update/<?php echo $row->id_aset_sub ?>" class="btn btn-info btn-sm">update</a>

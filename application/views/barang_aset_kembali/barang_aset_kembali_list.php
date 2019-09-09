@@ -19,7 +19,7 @@
         <th>Aset Barang</th>
 <!--         <th>Seri Aset Barang</th> -->
         <th>Keterangan</th>
-        <th>Action</th>
+  <!--       <th>Action</th> -->
             </tr>
 <?php
             foreach ($all_kembali as $kembali)
@@ -71,11 +71,11 @@
                             echo $f['keterangan'];
                         }
                 }?></td>
-            <td style="text-align:center" width="200px">
+            <!-- <td style="text-align:center" width="200px">
                 <a href="barang_aset_pinjam/detail/<?php echo $row->id_aset_pinjam ?>" class="btn btn-info btn-sm">detail</a>
                 <a href="barang_aset_pinjam/delete/<?php echo $row->id_aset_pinjam ?>" class="btn btn-danger btn-sm">delete</a>
-                <!-- <a href="<?php echo site_url ('barang_aset_kembali/kembali/'.$pinjam['id_aset_pinjam']);?>" class="btn btn-success btn-sm">kembalikan</a> -->
-            </td>
+                
+            </td> -->
         </tr>
                 <?php
             }
@@ -84,3 +84,4 @@
         </table>
         </div>
 </div>
+<!-- <a href="<?php echo site_url ('barang_aset_kembali/kembali/'.$pinjam['id_aset_pinjam']);?>" class="btn btn-success btn-sm">kembalikan</a> -->
