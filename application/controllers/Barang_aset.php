@@ -14,36 +14,44 @@ class Barang_aset extends CI_Controller
         $this->load->library('form_validation');
     }
 
+    // public function index()
+    // {
+    //     $q = urldecode($this->input->get('q', TRUE));
+    //     $start = intval($this->input->get('start'));
+        
+    //     if ($q <> '') {
+    //         $config['base_url'] = base_url() . 'barang_aset/index.html?q=' . urlencode($q);
+    //         $config['first_url'] = base_url() . 'barang_aset/index.html?q=' . urlencode($q);
+    //     } else {
+    //         $config['base_url'] = base_url() . 'barang_aset/index.html';
+    //         $config['first_url'] = base_url() . 'barang_aset/index.html';
+    //     }
+
+    //     $config['per_page'] = 10;
+    //     $config['page_query_string'] = TRUE;
+    //     $config['total_rows'] = $this->Barang_aset_model->total_rows($q);
+    //     $barang_aset = $this->Barang_aset_model->get_limit_data($config['per_page'], $start, $q);
+
+    //     $this->load->library('pagination');
+    //     $this->pagination->initialize($config);
+
+    //     $data = array(
+    //         'barang_aset_data' => $barang_aset,
+    //         'q' => $q,
+    //         'pagination' => $this->pagination->create_links(),
+    //         'total_rows' => $config['total_rows'],
+    //         'start' => $start,
+    //         'konten' => 'barang_aset/barang_aset_list',
+    //         'judul' => 'Data Aset',
+    //     );
+    //     $this->load->view('v_index', $data);
+    // }
+
     public function index()
     {
-        $q = urldecode($this->input->get('q', TRUE));
-        $start = intval($this->input->get('start'));
-        
-        if ($q <> '') {
-            $config['base_url'] = base_url() . 'barang_aset/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'barang_aset/index.html?q=' . urlencode($q);
-        } else {
-            $config['base_url'] = base_url() . 'barang_aset/index.html';
-            $config['first_url'] = base_url() . 'barang_aset/index.html';
-        }
-
-        $config['per_page'] = 10;
-        $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->Barang_aset_model->total_rows($q);
-        $barang_aset = $this->Barang_aset_model->get_limit_data($config['per_page'], $start, $q);
-
-        $this->load->library('pagination');
-        $this->pagination->initialize($config);
-
-        $data = array(
-            'barang_aset_data' => $barang_aset,
-            'q' => $q,
-            'pagination' => $this->pagination->create_links(),
-            'total_rows' => $config['total_rows'],
-            'start' => $start,
-            'konten' => 'barang_aset/barang_aset_list',
-            'judul' => 'Data Aset',
-        );
+        $data['judul'] = 'Data Aset';
+        $data['konten'] = 'barang_aset/barang_aset_list';
+        $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
         $this->load->view('v_index', $data);
     }
 

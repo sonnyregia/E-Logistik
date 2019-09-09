@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-1 text-right">
             </div>
-            <div class="col-md-3 text-right">,,
+           <!--  <div class="col-md-3 text-right">,,
                 <form action="<?php echo site_url('barang_aset_sub/index'); ?>" class="form-inline" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
@@ -28,7 +28,7 @@
                         </span>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px" id="selector">
             <tr>
@@ -38,7 +38,8 @@
             <tr>
                 <th>No</th>
         <th>Nama Aset</th>
-        <th>Seri Aset</th>
+        <th>Uraian Aset</th>
+        <th>NUP</th>
         <th>Tanggal Input Aset</th>
         <th>Tahun Aset</th>
         <th>Merk</th>
@@ -57,24 +58,25 @@
             <td><?php  
                             foreach($all_barang_aset as $b){
                                 if($barang['id_aset'] == $b['id_aset']){
-                                    echo $b['nama_aset'].' | '.$barang['id_aset'];
+                                    echo $b['nama_aset'];
                                 }
                             }
                         ?></td>
+            <td><?php echo $barang['detail_aset'] ;?></td>
             <td><?php echo $barang['seri'] ;?></td>
             <td><?php echo $barang['tanggal_input'] ;?></td>
             <td><?php echo $barang['tahun'] ?></td>
             <td><?php  
                             foreach($all_merk_aset as $c){
                                 if($barang['id_merk_aset'] == $c['id_merk_aset']){
-                                    echo $c['merk_aset'].' | '.$barang['id_merk_aset'];
+                                    echo $c['merk_aset'];
                                 }
                             }
                         ?></td>
             <td><?php  
                             foreach($all_satuan_aset as $d){
                                 if($barang['id_satuan_aset'] == $d['id_satuan_aset']){
-                                    echo $d['satuan_aset'].' | '.$barang['id_satuan_aset'];
+                                    echo $d['satuan_aset'];
                                 }
                             }
                         ?></td>
@@ -117,7 +119,7 @@
         <script type="text/javascript">
        $(document).ready(function() {
           $('#example').dataTable( {
-              "searching": false
+              "searching": true
           } );
         } );
 </script>

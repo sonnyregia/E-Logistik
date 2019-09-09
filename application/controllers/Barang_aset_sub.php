@@ -42,6 +42,7 @@ class Barang_aset_sub extends CI_Controller
         // 'kodeurut' => $this->No_urut->buat_kode_bmn(),
         'id_merk_aset' => set_value('id_merk_aset'),
         'penguasaan' => set_value('penguasaan'),
+        'detail_aset' => set_value('detail_aset'),
         'keterangan' => set_value('keterangan'),
         'id_satuan_aset' => set_value('id_satuan_aset'),
          'grup' => set_value('grup'),
@@ -87,6 +88,7 @@ class Barang_aset_sub extends CI_Controller
 		'id_aset' => $this->input->post('id_aset',TRUE),
         'tanggal_input' => date_format(date_create( $this->input->post('tanggal_input',TRUE)),'d F Y'),
         'tahun' => $this->input->post('tahun',TRUE),
+        'detail_aset' => $this->input->post('detail_aset',TRUE),
         'grup' => 1,
         'id_merk_aset' => $this->input->post('id_merk_aset',TRUE),
         // // 'gambar' => $pathBarcode,
@@ -218,6 +220,7 @@ class Barang_aset_sub extends CI_Controller
     $this->form_validation->set_rules('id_satuan_aset', 'satuan aset', 'trim|required');
     $this->form_validation->set_rules('penguasaan', 'penguasaan', 'trim|required');
     $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+    $this->form_validation->set_rules('detail_aset', 'detail_aset', 'trim|required');
 
 	$this->form_validation->set_rules('id_aset_sub', 'id_aset_sub', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

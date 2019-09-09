@@ -67,6 +67,15 @@ class Ruang_detail extends CI_Controller
         );
         $this->load->view('cetak_upb',$data);
     }
+
+    public function cetak_download($kode_detail)
+    {
+        
+        $data = array(
+            'data' => $this->db->query("SELECT * FROM ruang where id_ruang='$kode_detail'"),
+        );
+        $this->load->view('cetak_upb_d',$data);
+    }
     
     public function tambah_detail_upb(){
         $this->form_validation->set_rules('pemegang','Pemegang','required');
@@ -82,7 +91,7 @@ class Ruang_detail extends CI_Controller
                 'id_satuan_aset' => $this->input->post('id_satuan_aset'),
                 'pemegang' => $this->input->post('pemegang'),
             );
-            $ruang_id = $this->Ruang_detail_model->add_ruang($params);
+            $ruang_id = $this->Detail_model->add_ruang($params);
             $this->db->set('grup',2);
             $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
             $this->db->update('barang_aset_sub');
@@ -100,47 +109,6 @@ class Ruang_detail extends CI_Controller
         }
     }
 
-    public function create() 
-    {
-        $data = array(
-            'button' => 'Create',
-            'action' => site_url('ruang/create_action'),
-        'id_aset_sub' => set_value('id_aset_sub'),
-        'id_ruang' => set_value('id_ruang'),
-        'id_aset' => set_value('id_aset'),
-        'pemegang' => set_value('pemegang'),
-        // 'gambar' => set_value('gambar'),
-        'konten' => 'ruang/ruang_detail_form',
-            'judul' => 'Tambah Data Detail UPB',
-    );
-        $this->load->view('v_index', $data);
-        // $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
-        // $data['all_ruang'] = $this->Ruang_model->get_all_ruang();
-    }
-
-    public function create_action() 
-    {
-        $this->_rules();
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
-
-            $data = array(
-        'id_ruang' => $this->input->post('id_ruang',TRUE),
-        'id_aset' => $this->input->post('id_aset',TRUE),
-        'id_aset_sub' => $this->input->post('id_aset_sub',TRUE),
-        'pemegang' => $this->input->post('pemegang',TRUE),
-        );
-            $this->Ruang_detail_model->insert($data);
-            $this->db->set('grup',2);
-            $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
-            $this->db->update('barang_aset_sub');
-            // $this->Kode_urut_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('ruang'));
-        }
-    }
 
     public function delete($id) 
     {
@@ -154,6 +122,21 @@ class Ruang_detail extends CI_Controller
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('barang_aset_pinjam'));
         }
+    }
+
+    function remove($id_ruang_detail)
+    {
+        $ruang = $this->Detail_model->get_ruang($id_ruang_detail);
+        if(isset($ruang['id_ruang_detail']))
+        {
+            $this->Detail_model->delete_ruang($id_ruang_detail);
+            $this->db->set('grup',1);
+            $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
+            $this->db->update('barang_aset_sub');
+            redirect('ruang/index');
+        }
+        else
+            show_error('The Data you are trying to delete does not exist.');
     }
 
     // public function _rules() 

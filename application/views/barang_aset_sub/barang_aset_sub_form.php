@@ -17,8 +17,12 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="varchar">Seri Aset <?php echo form_error('seri') ?></label>
-            <input type="text" class="form-control" name="seri" id="seri" placeholder="Seri Aset" value="<?php echo $seri; ?>" />
+            <label for="varchar">Uraian Aset <?php echo form_error('detail_aset') ?></label>
+            <input type="text" class="form-control" name="detail_aset" placeholder="Uraian Aset" value="<?php echo $detail_aset; ?>" />
+        </div>
+        <div class="form-group">
+            <label for="varchar">NUP Aset <?php echo form_error('seri') ?></label>
+            <input type="text" class="form-control" name="seri" id="seri" placeholder="NUP Aset" value="<?php echo $seri; ?>" />
         </div>
         <div class="form-group">
             <label for="varchar">Merk Aset <?php echo form_error('merk_aset') ?></label>

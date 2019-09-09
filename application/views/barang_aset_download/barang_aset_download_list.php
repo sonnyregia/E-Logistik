@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <div class="row">
    <!--  <div class="col-md-4">
         <a href="app/tambah_penjualan" class="btn btn-primary">Tambah Transaksi</a>
@@ -46,3 +48,10 @@
         </div> -->
     </div>
 </div>
+        <script type="text/javascript">
+       $(document).ready(function() {
+          $('#example').dataTable( {
+              "searching": true
+          } );
+        } );
+</script>

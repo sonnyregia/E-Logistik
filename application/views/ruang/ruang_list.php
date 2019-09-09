@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-1 text-right">
             </div>
-            <div class="col-md-3 text-right">,,
+            <!-- <div class="col-md-3 text-right">,,
                 <form action="<?php echo site_url('ruang/index'); ?>" class="form-inline" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
@@ -29,7 +29,7 @@
                         </span>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px" id="selector">
             <tr>
@@ -58,7 +58,7 @@
             <td style="text-align:center" width="200px">
                 <a href="<?php echo site_url('ruang_detail/detail/'.$ruang['id_ruang']); ?>" class="btn btn-primary btn-xs"><span class="fa fa-pencil"></span> Detail</a>
                 <a href="<?php echo site_url('ruang/update/'.$ruang['id_ruang']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-pencil"></span> Edit</a>
-                <a href="<?php echo site_url('ruang_detail/cetak/'.$ruang['id_ruang']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
+                <a href="<?php echo site_url('ruang_detail/cetak/'.$ruang['id_ruang']); ?>"  target="_blank" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
                 <!-- <?php 
                 echo anchor(site_url('ruang_detail/index/?id_ruang='.$ruang['id_ruang']),'Detail'); 
                 echo ' | ';
@@ -84,7 +84,7 @@
         <script type="text/javascript">
        $(document).ready(function() {
           $('#example').dataTable( {
-              "searching": false
+              "searching": true
           } );
         } );
 </script>

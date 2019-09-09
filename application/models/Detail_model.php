@@ -26,6 +26,22 @@ class Detail_model extends CI_Model{
 		 $result = $this->db->get();
 		 return $result;
 	}
+
+	function add_ruang($params)
+    {
+        $this->db->insert('ruang_detail',$params);
+        return $this->db->insert_id();
+    }
+
+    function get_ruang($id_ruang_detail)
+    {
+        return $this->db->get_where('ruang_detail',array('id_ruang_detail'=>$id_ruang_detail))->row_array();
+    }
+
+    function delete_ruang($id_ruang_detail)
+    {
+        return $this->db->delete('ruang_detail',array('id_ruang_detail'=>$id_ruang_detail));
+    }
 }
 
 ?>

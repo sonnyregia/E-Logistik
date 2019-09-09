@@ -1,3 +1,9 @@
+<?php
+header("Content-type: application/octet-stream");
+
+header("Content-Disposition: attachment; filename=Laporan-Excel.xls");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +86,6 @@
 				<br><br><br><br><br>
 				<p>Kabag Keum</p>
 			</div>
-			<a href="<?php echo site_url('ruang_detail/cetak_download/'.$row->id_ruang); ?>"  target="_blank" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
 		</div>
 	</div>
 </div>

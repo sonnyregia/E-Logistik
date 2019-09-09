@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-1 text-right">
             </div>
-            <div class="col-md-3 text-right">,,
+         <!--    <div class="col-md-3 text-right">,,
                 <form action="<?php echo site_url('barang_aset/index'); ?>" class="form-inline" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
@@ -28,7 +28,7 @@
                         </span>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px" id="selector">
             <tr>
@@ -43,13 +43,13 @@
             </tr>
         </thead>
         <tbody><?php
-            foreach ($barang_aset_data as $barang)
+            foreach ($all_barang_aset as $barang)
             {
                 ?>
                 <tr>
             <td width="80px"><?php echo ++$start ?></td>
-            <td><?php echo $barang->kode_aset ?></td>
-            <td><?php echo $barang->nama_aset ?></td>
+            <td><?php echo $barang['kode_aset'] ?></td>
+            <td><?php echo $barang['nama_aset'] ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
                 // echo anchor(site_url('barang_aset/detail/'.$barang->id_aset),'Detail'); 
@@ -65,18 +65,18 @@
             ?>
             </tbody>
         </table>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
         </div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>
             </div>
-        </div>
+        </div> -->
         <script type="text/javascript">
        $(document).ready(function() {
           $('#example').dataTable( {
-              "searching": false
+              "searching": true
           } );
         } );
 </script>

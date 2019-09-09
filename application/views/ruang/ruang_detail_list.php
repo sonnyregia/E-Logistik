@@ -16,6 +16,7 @@ $rs = $data->row();
                     <th>Merk Aset</th>
                     <th>Satuan Aset</th>
                     <th>Pemegang</th>
+                    <th>Aksi</th>
                     
                 </tr>
             </thead>
@@ -84,11 +85,11 @@ $rs = $data->row();
                     <td><?php echo $row->seri?></td>
                     <td><?php echo $row->tahun?></td>
                     <td><?php echo $row->merk_aset?></td>
-                        <td><?php echo $row->satuan_aset?></td>
+                    <td><?php echo $row->satuan_aset?></td>
                     <td><?php echo $row->pemegang ?></td>
-                   <!--  <td>
-                        <a href="barang_aset_download/update/<?php echo $row->id_aset_sub ?>" class="btn btn-info btn-sm">update</a>
-                    </td> -->
+                    <td>
+                        <a href="ruang_detail/remove/<?php echo $row->id_ruang_detail ?>" class="btn btn-info btn-sm">Delete</a>
+                    </td>
                 </tr>
                 <!-- <?php $no++; ?> -->
                 <?php }
