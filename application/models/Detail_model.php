@@ -42,6 +42,17 @@ class Detail_model extends CI_Model{
     {
         return $this->db->delete('ruang_detail',array('id_ruang_detail'=>$id_ruang_detail));
     }
+
+    function Delete($table,$field,$ruang)
+	{
+		$this->db->where($field,$ruang);
+		$this->db->delete($table);
+	}
+
+	function hapus_barang($id_ruang_detail){
+        $hasil=$this->db->query("DELETE FROM ruang_detail WHERE id_ruang_detail='$id_ruang_detail'");
+        return $hasil;
+    }	
 }
 
 ?>

@@ -124,20 +124,66 @@ class Ruang_detail extends CI_Controller
         }
     }
 
-    function remove($id_ruang_detail)
+    public function remove($id_ruang_detail) 
     {
-        $ruang = $this->Detail_model->get_ruang($id_ruang_detail);
-        if(isset($ruang['id_ruang_detail']))
-        {
+        $row = $this->Detail_model->get_ruang($id_ruang_detail);
+
+        if ($row) {
             $this->Detail_model->delete_ruang($id_ruang_detail);
             $this->db->set('grup',1);
-            $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
+            $this->db->where('id_aset_sub');
             $this->db->update('barang_aset_sub');
-            redirect('ruang/index');
+            $this->session->set_flashdata('message', 'Delete Record Success');
+            redirect(site_url('ruang'));
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('ruang'));
         }
-        else
-            show_error('The Data you are trying to delete does not exist.');
     }
+
+    // function remove($id_ruang_detail)
+    // {
+    //     $ruang = $this->Detail_model->get_ruang($id_ruang_detail);
+    //     if(isset($ruang['id_ruang_detail']))
+    //     {
+    //         $this->Detail_model->delete_ruang($id_ruang_detail);
+    //         $this->db->set('grup',1);
+    //         $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
+    //         $this->db->update('barang_aset_sub');
+    //         redirect('ruang/index');
+    //     }
+    //     else
+    //         show_error('The Data you are trying to delete does not exist.');
+    // }
+
+    function hapus_barang(){
+        $id_ruang_detail=$this->input->post('id_ruang_detail');
+        $this->Detail_model->hapus_barang($id_ruang_detail);
+        $this->db->set('grup',1);
+            $this->db->where('id_aset_sub');
+            $this->db->update('barang_aset_sub');
+        redirect('ruang');
+    }
+
+    // public function remove()
+    // {
+    //     $ruang = $this->input->get('id_ruang_detail',TRUE);
+    //     $field='id_ruang_detail';
+    //     $this->db->where('id_ruang_detail',$ruang);
+    //     $dd=$this->db->get('ruang_detail')->result();
+    //     foreach ($dd as $key => $value) {
+    //         $id_aset_sub=$value->id_aset_sub;
+    //         $id_ruang_detail=$value->id_ruang_detail;
+    //     }
+    //         $this->db->set('grup',1);
+    //         $this->db->where('id_aset_sub',$id_aset_sub);
+    //         $this->db->update('barang_aset_sub');
+
+    //         $this->db->where('id_ruang_detail',$id_ruang_detail);
+
+    //         $query = $this->Detail_model->delete('ruang_detail',$field,$ruang);
+    //         redirect('ruang'.$id_ruang_detail);
+    // }
 
     // public function _rules() 
     // {

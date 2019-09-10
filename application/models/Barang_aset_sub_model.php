@@ -86,11 +86,16 @@ class Barang_aset_sub_model extends CI_Model
         return $this->db->get('barang_aset_sub')->result_array();
     }
     
-    function get_stok($kode_barang)
+    function get_barang($id_aset_sub)
     {
-        return $this->db->get_where('barang',array('id_barang'=>$kode_barang))->result();
+        return $this->db->get_where('barang_aset_sub',array('id_aset_sub'=>$id_aset_sub))->row_array();
     }
 
+    function update_barang($id_aset_sub,$params)
+    {
+        $this->db->where('id_aset_sub',$id_aset_sub);
+        return $this->db->update('barang_aset_sub',$params);
+    }
 }
 
 /* End of file Barang_model.php */
