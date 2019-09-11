@@ -46,7 +46,7 @@
         <th>Satuan Aset</th>
          <th>Status</th>
        <!--  <th>Barcode</th> -->
-<!--         <th>Action</th> -->
+        <th>Action</th>
             </tr>
         </thead>
         <tbody><?php
@@ -93,15 +93,15 @@
             <!-- <td><?php echo base_url(). $barang->gambar ?></td> -->
   <!--           <td><?php echo $barang->penguasaan ?></td>
             <td><?php echo $barang->keterangan ?></td> -->
-         <!--    <td style="text-align:center" width="200px">
+         <td style="text-align:center" width="200px">
                 <?php 
                 // echo anchor(site_url('barang_aset/detail/'.$barang->id_aset),'Detail'); 
                 // echo ' | ';
-                echo anchor(site_url('barang_aset_sub/update/'.$barang['id_aset_sub']),'Update'); 
+                echo anchor(site_url('barang_aset_sub/edit/'.$barang['id_aset_sub']),'Update'); 
                 echo ' | '; 
                 echo anchor(site_url('barang_aset_sub/delete/'.$barang['id_aset_sub']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
-            </td> -->
+            </td>
         </tr>
                 <?php
             }

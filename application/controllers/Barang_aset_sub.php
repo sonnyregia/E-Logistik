@@ -115,15 +115,24 @@ class Barang_aset_sub extends CI_Controller
             {
             $params = array(
                 'grup' => $this->input->post('grup'),
+                'id_merk_aset' => $this->input->post('id_merk_aset'),
                 );
                 $this->Barang_aset_sub_model->update_barang($id_aset_sub,$params);
                 redirect('barang_aset_sub');
             }
             else
             {
-                $data
+                $this->load->model('Grup_m');
+                $data['all_grup'] = $this->Grup_m->get_all_grup();
+                $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
+
+                $data['judul'] = 'Aset NUP';
+                $data['konten'] = 'barang_aset_sub/barang_aset_sub_edit';
+                $this->load->view('v_index', $data);
             }
         }
+        else
+            show_error('The barang you are trying to edit does not exist.');
     }
     
     public function update($id) 
