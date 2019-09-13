@@ -101,7 +101,7 @@ class Barang_aset_sub extends CI_Controller
             $this->Barang_aset_sub_model->insert($data);
             // $this->Kode_urut_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('barang_aset_sub'));
+            redirect(site_url('barang_aset_download'));
         }
     }
 
@@ -114,17 +114,23 @@ class Barang_aset_sub extends CI_Controller
             if($this->form_validation->run())
             {
             $params = array(
+                'id_aset' => $this->input->post('id_aset'),
+                'seri' => $this->input->post('seri'),
+                'detail_aset' => $this->input->post('detail_aset'),
                 'grup' => $this->input->post('grup'),
                 'id_merk_aset' => $this->input->post('id_merk_aset'),
+                'id_satuan_aset' => $this->input->post('id_satuan_aset'),
                 );
                 $this->Barang_aset_sub_model->update_barang($id_aset_sub,$params);
-                redirect('barang_aset_sub');
+                redirect('barang_aset_download');
             }
             else
             {
                 $this->load->model('Grup_m');
                 $data['all_grup'] = $this->Grup_m->get_all_grup();
                 $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
+                $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
+                $data['all_satuan_aset'] = $this->Satuan_aset_model->get_all_satuan();
 
                 $data['judul'] = 'Aset NUP';
                 $data['konten'] = 'barang_aset_sub/barang_aset_sub_edit';
@@ -239,22 +245,22 @@ class Barang_aset_sub extends CI_Controller
         }
     }
 
- //    public function _rules() 
- //    {
-	// $this->form_validation->set_rules('seri', 'kode', 'trim|required');
-	// $this->form_validation->set_rules('id_aset', 'nama aset', 'trim|required');
- //    $this->form_validation->set_rules('tanggal_input', 'tanggal_input aset', 'trim');
- //    $this->form_validation->set_rules('tahun', 'tahun aset', 'trim|required');
- //    $this->form_validation->set_rules('grup', 'grup', 'trim');
- //    $this->form_validation->set_rules('id_merk_aset', 'merk aset', 'trim|required');
- //    $this->form_validation->set_rules('id_satuan_aset', 'satuan aset', 'trim|required');
- //    $this->form_validation->set_rules('penguasaan', 'penguasaan', 'trim|required');
- //    $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
- //    $this->form_validation->set_rules('detail_aset', 'detail_aset', 'trim|required');
+    public function _rules() 
+    {
+	$this->form_validation->set_rules('seri', 'kode', 'trim|required');
+	$this->form_validation->set_rules('id_aset', 'nama aset', 'trim|required');
+    $this->form_validation->set_rules('tanggal_input', 'tanggal_input aset', 'trim');
+    $this->form_validation->set_rules('tahun', 'tahun aset', 'trim|required');
+    $this->form_validation->set_rules('grup', 'grup', 'trim');
+    $this->form_validation->set_rules('id_merk_aset', 'merk aset', 'trim|required');
+    $this->form_validation->set_rules('id_satuan_aset', 'satuan aset', 'trim|required');
+    $this->form_validation->set_rules('penguasaan', 'penguasaan', 'trim|required');
+    $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+    $this->form_validation->set_rules('detail_aset', 'detail_aset', 'trim|required');
 
-	// $this->form_validation->set_rules('id_aset_sub', 'id_aset_sub', 'trim');
-	// $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
- //    }
+	$this->form_validation->set_rules('id_aset_sub', 'id_aset_sub', 'trim');
+	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    }
 
 }
 

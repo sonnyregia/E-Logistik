@@ -1,9 +1,11 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <?php 
-$rs = $data->row();
+$rs = $adata->row();
  ?>
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-bordered" style="margin-bottom: 10px" >
+        <table id="example" class="table table-bordered" style="margin-bottom: 10px" >
             <thead>
                 <tr>
                     <th>No.</th>
@@ -101,3 +103,10 @@ $rs = $data->row();
         <a href="ruang/index/" class="btn btn-danger btn-sm">Back</a>
     </div>
 </div>
+        <script type="text/javascript">
+       $(document).ready(function() {
+          $('#example').dataTable( {
+              "searching": true
+          } );
+        } );
+</script>

@@ -9,5 +9,5 @@
         </div>
         <input type="hidden" name="id_aset" value="<?php echo $id_aset; ?>" /> 
         <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
-        <a href="<?php echo site_url('barang_aset') ?>" class="btn btn-default">Cancel</a>
+        <a href="<?php echo site_url('barang_aset_download') ?>" class="btn btn-default">Cancel</a>
     </form>

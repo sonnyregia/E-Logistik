@@ -54,9 +54,9 @@
                 <?php 
                 // echo anchor(site_url('barang_aset/detail/'.$barang->id_aset),'Detail'); 
                 // echo ' | ';
-                echo anchor(site_url('barang_aset/update/'.$barang->id_aset),'Update'); 
+                echo anchor(site_url('barang_aset/update/'.$barang['id_aset']),'Update'); 
                 echo ' | '; 
-                echo anchor(site_url('barang_aset/delete/'.$barang->id_aset),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                echo anchor(site_url('barang_aset/delete/'.$barang['id_aset']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
             </td>
         </tr>

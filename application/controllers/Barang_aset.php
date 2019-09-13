@@ -133,7 +133,7 @@ class Barang_aset extends CI_Controller
 
             $this->Barang_aset_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('barang_aset'));
+            redirect(site_url('barang_aset_download'));
         }
     }
     

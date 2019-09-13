@@ -4,6 +4,10 @@
    <!--  <div class="col-md-4">
         <a href="app/tambah_penjualan" class="btn btn-primary">Tambah Transaksi</a>
         <!-- <a href="app/export_penjualan" target="_blank" class="btn btn-primary">Export</a> -->
+        <div class="col-md-4">
+                <?php echo anchor(site_url('barang_aset/create'),'Tambah Aset', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('barang_aset_sub/create'),'Tambah Detail Aset', 'class="btn btn-info"'); ?>
+            </div>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4"></div>
@@ -32,7 +36,7 @@
 
                     <td>
                         <a href="barang_aset_download/detail/<?php echo $row->id_aset ?>" class="btn btn-info btn-sm">detail</a>
-                       <!--  <a href="barang_aset_download/hapus/<?php echo $row->kode_aset ?>" class="btn btn-danger btn-sm" onclick="javasciprt: return confirm('Are You Sure ?')">hapus</a> -->
+                       <a href="barang_aset/update/<?php echo $row->id_aset ?>" class="btn btn-warning btn-sm">edit</a>
                          <!-- <a href="barang_aset_download/cetak/<?php echo $row->kode_aset ?>" target="_blank" class="btn btn-success btn-sm">cetak</a> -->
                     </td>
                 </tr>

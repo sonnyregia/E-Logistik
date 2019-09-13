@@ -48,14 +48,31 @@ class Ruang_detail extends CI_Controller
     //     $this->load->view('v_index', $data);
     // }
 
+    // public function detail($kode_detail)
+    // {
+        
+    //     $data = array(
+    //         'konten' => 'ruang/ruang_detail_list',
+    //         'judul' => 'Detail UPB',
+    //         'data' => $this->db->query("SELECT * FROM ruang where id_ruang='$kode_detail'"),
+    //     );
+    //     $this->load->view('v_index',$data);
+    // }
+
+    // public function index()
+    // {
+    //     $data['judul'] = 'UPB';
+    //     $data['konten'] = 'ruang/ruang_list';
+    //     $data['all_ruang'] = $this->Ruang_model->get_all_ruang();
+        
+    //     $this->load->view('v_index', $data);
+    // }
+
     public function detail($kode_detail)
     {
-        
-        $data = array(
-            'konten' => 'ruang/ruang_detail_list',
-            'judul' => 'Detail UPB',
-            'data' => $this->db->query("SELECT * FROM ruang where id_ruang='$kode_detail'"),
-        );
+        $data['judul'] = 'Detail UPB';
+        $data['konten'] = 'ruang/ruang_detail_list';
+        $data['adata'] = $this->db->query("SELECT * FROM ruang where id_ruang='$kode_detail'");
         $this->load->view('v_index',$data);
     }
 

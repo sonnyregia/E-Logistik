@@ -3,11 +3,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <form action="<?php echo $action; ?>" method="post">
         <?php echo form_open('barang_aset_sub/edit/'.$barang['id_aset_sub']); ?>
-        <div class="box-body">
-                <div class="row clearfix">
-                    <div class="col-md-6">
-                        <label for="id_merk_aset" class="control-label"><span class="text-danger">*</span>Merk</label>
-                        <div class="form-group">
+        <div class="form-group">
+                        <label for="id_aset" class="control-label"><span class="text-danger"></span>Nama Aset</label>
+                   <!--      <div class="form-group"> -->
+                            <select name="id_aset" class="js-example-basic-single form-control">
+                                <option value="">select Nama Aset | Kode Aset</option>
+                                <?php 
+                                foreach($all_barang_aset as $aset)
+                                {
+                                    $selected = ($aset['id_aset'] == $barang['id_aset']) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$aset['id_aset'].'" '.$selected.'>'.$aset['nama_aset'].' | '.$aset['kode_aset'].' </option>';
+                                } 
+                                ?>
+                            </select>
+                         <!--    <span class="text-danger"><?php echo form_error('grup');?></span> -->
+                        <!-- </div> -->
+                    </div>
+        <div class="form-group">
+            <label for="varchar">NUP <?php echo form_error('seri') ?></label>
+            <input type="text" class="form-control" name="seri" placeholder="NUP" value="<?php echo $barang['seri']; ?>" />
+        </div>
+        <div class="form-group">
+            <label for="varchar">Uraian Aset <?php echo form_error('detail_aset') ?></label>
+            <input type="text" class="form-control" name="detail_aset" placeholder="Uraian Aset" value="<?php echo $barang['detail_aset']; ?>" />
+        </div>
+        <div class="form-group">
+                        <label for="id_merk_aset" class="control-label"><span class="text-danger"></span>Merk</label>
+                   <!--      <div class="form-group"> -->
                             <select name="id_merk_aset" class="js-example-basic-single form-control">
                                 <option value="">select merk</option>
                                 <?php 
@@ -20,12 +43,29 @@
                                 ?>
                             </select>
                          <!--    <span class="text-danger"><?php echo form_error('grup');?></span> -->
-                        </div>
+                        <!-- </div> -->
                     </div>
-                    <div class="col-md-6">
-                        <label for="grup" class="control-label"><span class="text-danger">*</span>Role</label>
-                        <div class="form-group">
-                            <select name="grup" class="form-control">
+            <div class="form-group">
+                        <label for="id_satuan_aset" class="control-label"><span class="text-danger"></span>Satuan</label>
+                   <!--      <div class="form-group"> -->
+                            <select name="id_satuan_aset" class="js-example-basic-single form-control">
+                                <option value="">select satuan</option>
+                                <?php 
+                                foreach($all_satuan_aset as $satuan)
+                                {
+                                    $selected = ($satuan['id_satuan_aset'] == $barang['id_satuan_aset']) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$satuan['id_satuan_aset'].'" '.$selected.'>'.$satuan['satuan_aset'].'</option>';
+                                } 
+                                ?>
+                            </select>
+                         <!--    <span class="text-danger"><?php echo form_error('grup');?></span> -->
+                        <!-- </div> -->
+                    </div>
+            <div class="form-group">
+                        <label for="grup" class="control-label"><span class="text-danger"></span>Role</label>
+                      
+                            <select name="grup" class="js-example-basic-single form-control">
                                 <option value="">select role</option>
                                 <?php 
                                 foreach($all_grup as $g)
@@ -37,14 +77,12 @@
                                 ?>
                             </select>
                             <span class="text-danger"><?php echo form_error('grup');?></span>
-                        </div>
+                       
                     </div>
-                </div>
-            </div>
            
         <input type="hidden" name="id_aset_sub" value="<?php echo $id_aset_sub; ?>" />
         <button type="submit" class="btn btn-primary">Create</button> 
-        <a href="<?php echo site_url('barang_aset_sub') ?>" class="btn btn-default">Cancel</a>
+        <a href="<?php echo site_url('barang_aset_download') ?>" class="btn btn-default">Cancel</a>
     </form>
 <script type="text/javascript">
     $(document).ready(function() {

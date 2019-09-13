@@ -67,9 +67,9 @@
                 <li>
                   <a href="#demo6" class="list-group-item " data-toggle="collapse"><i class="glyphicon glyphicon-th-large"></i>Data BMN  <span class="glyphicon glyphicon-chevron-right"></span></a>
                     <li class="collapse" id="demo6">
-                      <a href="barang_aset" class="list-group-item"> Data Aset</a>
-                      <a href="barang_aset_sub" class="list-group-item"> Data Aset Sub</a>
-                    <!--   <a href="barang_aset_download" class="list-group-item"> Data Aset Master</a> -->
+                     <!--  <a href="barang_aset" class="list-group-item"> Data Aset</a>
+                      <a href="barang_aset_sub" class="list-group-item"> Data Aset Sub</a> -->
+                    <a href="barang_aset_download" class="list-group-item"> Data Aset</a>
                       <a href="barang_aset_pinjam" class="list-group-item"> Data Aset Pinjam</a>
                       <a href="barang_aset_kembali" class="list-group-item"> Data Aset Kembali</a>
                       <a href="satuan_aset" class="list-group-item"> Satuan Aset</a>

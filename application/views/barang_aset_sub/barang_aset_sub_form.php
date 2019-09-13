@@ -68,7 +68,7 @@
         <input type="hidden" name="grup" value="<?php echo $grup; ?>" />
         <input type="hidden" name="tanggal_input" value="<?php echo date('d F Y') ?>">  
         <button type="submit" class="btn btn-primary">Create</button> 
-        <a href="<?php echo site_url('barang_aset_sub') ?>" class="btn btn-default">Cancel</a>
+        <a href="<?php echo site_url('barang_aset_download') ?>" class="btn btn-default">Cancel</a>
     </form>
 <script type="text/javascript">
     $(document).ready(function() {
