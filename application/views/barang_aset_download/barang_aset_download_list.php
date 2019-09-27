@@ -37,7 +37,7 @@
                     <td>
                         <a href="barang_aset_download/detail/<?php echo $row->id_aset ?>" class="btn btn-info btn-sm">detail</a>
                        <a href="barang_aset/update/<?php echo $row->id_aset ?>" class="btn btn-warning btn-sm">edit</a>
-                         <!-- <a href="barang_aset_download/cetak/<?php echo $row->kode_aset ?>" target="_blank" class="btn btn-success btn-sm">cetak</a> -->
+                         <a href="barang_aset_download/cetak/<?php echo $row->id_aset ?>" target="_blank" class="btn btn-success btn-sm">cetak</a>
                     </td>
                 </tr>
                 <?php } ?>

@@ -37,9 +37,9 @@ class Barang_aset_download extends CI_Controller
     public function cetak($kode_cetak)
     {
         $data = array(
-            'data' => $this->db->query("SELECT * FROM barang_aset where kode_aset='$kode_cetak'"),
+            'data' => $this->db->query("SELECT * FROM barang_aset where id_aset='$kode_cetak'"),
         );
-        $this->load->view('cetak_aset',$data);
+        $this->load->view('cetak_aset_bmn',$data);
     }
 
     public function update($id) 
