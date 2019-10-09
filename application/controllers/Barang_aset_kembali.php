@@ -12,6 +12,7 @@ class Barang_aset_kembali extends CI_Controller
         $this->load->model('Barang_aset_model');
         $this->load->model('Barang_aset_sub_model');
         $this->load->model('Pinjam_model');
+        $this->load->model('Kartu_model');
         $this->load->model('No_urut');
         $this->load->library('form_validation');
     }
@@ -24,6 +25,7 @@ class Barang_aset_kembali extends CI_Controller
         $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
         $data['all_barang_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
         $data['all_kembali'] = $this->Kembali_model->get_all_barang_kembali();
+        $data['all_kartu'] = $this->Kartu_model->get_all_kartu();
 
         $this->load->view('v_index', $data);
     }
@@ -81,6 +83,7 @@ class Barang_aset_kembali extends CI_Controller
                 'id_aset_pinjam' => $this->input->post('id_aset_pinjam'),
                 'tanggal_balik' => $this->input->post('tanggal_balik'),
                 'id_aset_sub' => $this->input->post('id_aset_sub'),
+                'id_kartu' => $this->input->post('id_kartu'),
                 // 'terlambat' => ((abs(strtotime($akhir) - strtotime($awal)))/(60*60*24))
                 'terlambat' => $SLS,
                 // 'seri' => $this->input->post('seri'),
@@ -89,6 +92,10 @@ class Barang_aset_kembali extends CI_Controller
             $this->db->set('grup',1);
             $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
             $this->db->update('barang_aset_sub');
+
+            $this->db->set('grup_k',1);
+            $this->db->where('id_kartu',$this->input->post('id_kartu'));
+            $this->db->update('kartu');
 
             $this->db->set('status',0);
             $this->db->where('id_aset_pinjam',$this->input->post('id_aset_pinjam'));
@@ -105,7 +112,8 @@ class Barang_aset_kembali extends CI_Controller
             $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
             $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
             $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
-            $data['all_satuan_aset'] = $this->Satuan_aset_model->get_all_satuan();          
+            $data['all_satuan_aset'] = $this->Satuan_aset_model->get_all_satuan();
+            $data['all_kartu'] = $this->Kartu_model->get_all_kartu();          
             
             $data['judul'] = 'Aset Kembali';
             $data['konten'] = 'barang_aset_kembali/barang_aset_kembali_kembali';
@@ -212,7 +220,7 @@ class Barang_aset_kembali extends CI_Controller
     public function cek_data()
     {
         $id_aset_pinjam = $this->input->post('id_aset_pinjam');
-        $cek = $this->db->query("SELECT * FROM barang_aset_pinjam as a, barang_aset as b, barang_aset_sub as s, merk_aset as d, satuan_aset as e WHERE a.id_aset=b.id_aset and b.id_aset=s.id_aset and a.id_aset_sub=s.id_aset_sub and s.id_merk_aset=d.id_merk_aset and s.id_satuan_aset=e.id_satuan_aset and a.id_aset_pinjam='$id_aset_pinjam'")->row();
+        $cek = $this->db->query("SELECT * FROM barang_aset_pinjam as a, barang_aset as b, barang_aset_sub as s, merk_aset as d, satuan_aset as e, kartu as k WHERE a.id_aset=b.id_aset and b.id_aset=s.id_aset and a.id_aset_sub=s.id_aset_sub and s.id_merk_aset=d.id_merk_aset and s.id_satuan_aset=e.id_satuan_aset and a.id_kartu=k.id_kartu and a.id_aset_pinjam='$id_aset_pinjam'")->row();
         $data = array(
             'id_aset' => $cek->id_aset,
             'id_aset_sub' => $cek->id_aset_sub,
@@ -223,6 +231,7 @@ class Barang_aset_kembali extends CI_Controller
             'keterangan' => $cek->keterangan,
             'id_satuan_aset' => $cek->id_satuan_aset,
             'id_merk_aset' => $cek->id_merk_aset,
+            'id_kartu' => $cek->id_kartu,
         );
         echo json_encode($data);
     }

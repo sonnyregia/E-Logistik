@@ -7,8 +7,17 @@
             <input type="text" class="form-control" name="kode_pinjam" id="kode_pinjam" placeholder="Kode Pinjam" value="<?php echo $kode_pinjam; ?>" readonly/>
         </div> -->
         <div class="form-group">
-            <label for="varchar">Nomor Kartu <?php echo form_error('kartu_p') ?></label>
-            <input type="text" class="form-control" name="kartu_p" id="kartu_p" placeholder="Nomor Kartu" value="<?php echo $kartu_p; ?>" />
+           <select name="id_kartu" class="js-example-basic-single form-control">
+               <option value="">Nomor Kartu</option>
+               <?php
+                    foreach($all_kartu as $kartu){
+                        $selected = ($kartu['id_kartu'] == $this->input->post('id_kartu')) ? ' selected="selected"' : "";
+                        if($kartu['id_kartu'] && $kartu['grup_k']==1){
+                        echo '<option value="'.$kartu['id_kartu'].'" '.$selected.'>'.$kartu['nomor_kartu'].'</option>';
+                    }
+                    }
+               ?>
+           </select>
         </div>
         <div class="form-group">
             <label for="varchar">Nama Pegawai <?php echo form_error('nama_pegawai') ?></label>
@@ -69,10 +78,10 @@
                                 ?>  
             </select>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="varchar">Tgl Balik <?php echo form_error('tgl_balik') ?></label>
             <input data-provide="datepicker" class="bootstrap-datepicker form-control" name="tgl_balik" id="tgl_balik" placeholder="Tgl Balik" value="<?php echo $tgl_balik; ?>" />
-        </div>        
+        </div> -->        
         <div class="form-group">
             <label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
             <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />

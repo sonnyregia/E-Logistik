@@ -12,6 +12,7 @@ class Barang_aset_pinjam extends CI_Controller
         $this->load->model('Barang_aset_model');
         $this->load->model('Barang_aset_sub_model');
         $this->load->model('Pinjam_model');
+        $this->load->model('Kartu_model');
         $this->load->model('No_urut');
         $this->load->library('form_validation');
     }
@@ -24,6 +25,7 @@ class Barang_aset_pinjam extends CI_Controller
         $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
         $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
         $data['all_barang_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
+        $data['all_kartu'] = $this->Kartu_model->get_all_kartu();
 
         $this->load->view('v_index', $data);
     }
@@ -61,7 +63,7 @@ class Barang_aset_pinjam extends CI_Controller
     
     public function create() 
     {
-        $this->form_validation->set_rules('kartu_p','Kartu','required');
+        $this->form_validation->set_rules('id_kartu','Kartu','required');
 
         if($this->form_validation->run())     
         {   
@@ -82,16 +84,20 @@ class Barang_aset_pinjam extends CI_Controller
                 'tanggal_pinjam' => $tgl,
                 'tgl_balik' => $s3,
                 'id_aset_sub' => $this->input->post('id_aset_sub'),
-                'kartu_p' => $this->input->post('kartu_p'),
+                'id_kartu' => $this->input->post('id_kartu'),
                 'nama_pegawai' => $this->input->post('nama_pegawai'),
                 'jabatan' => $this->input->post('jabatan'),
                 'keterangan' => $this->input->post('keterangan'),
                 'status' => 1,
             );
             $pinjam_id = $this->Pinjam_model->add_pinjam($params);
-            $this->db->set('grup',0);
+            $this->db->set('grup',3);
             $this->db->where('id_aset_sub',$this->input->post('id_aset_sub'));
             $this->db->update('barang_aset_sub');
+
+            $this->db->set('grup_k',2);
+            $this->db->where('id_kartu',$this->input->post('id_kartu'));
+            $this->db->update('kartu');
             redirect('barang_aset_pinjam');
         }
         else
@@ -102,6 +108,7 @@ class Barang_aset_pinjam extends CI_Controller
             
             $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
             $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
+            $data['all_kartu'] = $this->Kartu_model->get_all_kartu();
             $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
             $data['all_satuan_aset'] = $this->Satuan_aset_model->get_all_satuan();          
             
@@ -140,7 +147,7 @@ class Barang_aset_pinjam extends CI_Controller
         'jabatan' => $this->input->post('jabatan',TRUE),
         'keterangan' => $this->input->post('keterangan',TRUE),
         'id_aset_sub' => $this->input->post('id_aset_sub',TRUE),
-        'kartu_p' => $this->input->post('kartu_p',TRUE),
+        'id_kartu' => $this->input->post('id_kartu',TRUE),
         'tanggal_pinjam' => $this->input->post('tanggal_pinjam',TRUE),
         // 'foto_barang' => $dfile,
         );
@@ -148,7 +155,8 @@ class Barang_aset_pinjam extends CI_Controller
             $this->Barang_aset_pinjam_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
-        $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
+            $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
+            $data['all_kartu'] = $this->Kartu_model->get_all_kartu();
             redirect(site_url('barang_aset_pinjam'));
         }
     }

@@ -38,7 +38,12 @@
                 <tr>
             <td width="80px"><?php echo ++$start ?></td>
             <!-- <td><?php echo $row->kode_pinjam ?></td> -->
-            <td><?php echo $pinjam['kartu_p'] ;?></td>
+            <td><?php foreach($all_kartu as $k){
+                if($pinjam['id_kartu'] == $k['id_kartu']){
+                    echo $k['nomor_kartu'];
+                }
+            } 
+            ?></td>
             <?php $oridate=$pinjam['tanggal_pinjam'];
                 $date=date("d-M-Y",strtotime($oridate));?>
             <td><?php echo $date;?></td>

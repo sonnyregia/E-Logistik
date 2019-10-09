@@ -21,25 +21,34 @@
         <label for="varchar">Aset <?php echo form_error('id_aset_pinjam') ?></label>
         <div class="form-group">
             <select id="id_aset_pinjam" name="id_aset_pinjam" class="js-example-basic-single form-control">
-                <option value="">Nomor Kartu | Pegawai | Nama Aset</option>
+                <option value="">Pegawai | Nama Aset</option>
                  <?php 
                                 foreach($all_pinjam as $pinjam)
                                 {
                                     $selected = ($pinjam['id_aset_pinjam'] == $this->input->post('id_aset_pinjam')) ? ' selected="selected"' : "";
                                     foreach($all_barang_aset as $aset){
                                         if($pinjam['id_aset'] == $aset['id_aset'] && $pinjam['status']==1){
-                                    echo '<option value="'.$pinjam['id_aset_pinjam'].'" '.$selected.'>'.$pinjam['kartu_p'].' | '.$pinjam['nama_pegawai'].' | '.$aset['nama_aset'].'</option>';
+                                    echo '<option value="'.$pinjam['id_aset_pinjam'].'" '.$selected.'>'.$pinjam['nama_pegawai'].' | '.$aset['nama_aset'].'</option>';
                                         }
                                     }
                                 } 
                                 ?>            
             </select>
         </div>
-       <!--  <div class="form-group">
-            <label for="varchar">Nama Aset </label>
-            <input type="hidden" class="form-control" id="id_aset" name="id_aset" readonly />
-            
-        </div> -->
+        <div class="form-group">
+        <label for="varchar">Nomor Kartu </label>
+           <select id="id_kartu" name="id_kartu" class="form-control" readonly>
+               <option value="">Nomor Kartu</option>
+                <?php
+                    foreach($all_kartu as $kartu){
+                        $selected = ($kartu['id_kartu'] == $this->input->post('id_kartu')) ? ' selected="selected"' : "";
+                            if($kartu['id_kartu'] && $kartu['grup_k']==2){
+                                echo '<option value="'.$kartu['id_kartu'].'"'.$selected.'>'.$kartu['nomor_kartu'].'</option>';
+                            }
+                    }
+                ?>
+           </select>
+        </div>
         <div class="form-group">
             <label for="varchar">Barang Aset </label>
             <select id="id_aset" name="id_aset" class="form-control" readonly>
@@ -143,7 +152,8 @@
             $('#id_satuan_aset').val(resp.id_satuan_aset);
             $('#tanggal_pinjam').val(resp.tanggal_pinjam); 
             $('#id_aset_sub').val(resp.id_aset_sub);
-            $('#id_aset').val(resp.id_aset); 
+            $('#id_aset').val(resp.id_aset);
+            $('#id_kartu').val(resp.id_kartu);
         }
       });
       // alert(id);

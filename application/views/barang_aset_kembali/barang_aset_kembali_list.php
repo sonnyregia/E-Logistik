@@ -28,9 +28,9 @@
                 <tr>
             <td width="80px"><?php echo ++$start ?></td>
             <!-- <td><?php echo $row->kode_pinjam ?></td> -->
-            <td><?php foreach($all_pinjam as $e){
-                        if($kembali['id_aset_pinjam'] == $e['id_aset_pinjam']){
-                            echo $e['kartu_p'];
+            <td><?php foreach($all_kartu as $e){
+                        if($kembali['id_kartu'] == $e['id_kartu']){
+                            echo $e['nomor_kartu'];
                         }
                 }?></td>
             <td><?php foreach($all_pinjam as $a){
