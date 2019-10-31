@@ -17,7 +17,7 @@
                 <th>Pegawai</th>
         <th>Jabatan</th>
         <th>Aset Barang</th>
-<!--         <th>Seri Aset Barang</th> -->
+         <th>NUP</th>
         <th>Keterangan</th>
   <!--       <th>Action</th> -->
             </tr>
@@ -66,14 +66,23 @@
                                 }
                             }
                         ?></td>
+             <td><?php  
+                            foreach($all_barang_sub as $g){
+                                if($kembali['id_aset_sub'] == $g['id_aset_sub']){
+                                    echo $g['seri'];
+                                }
+                            }
+                        ?></td>
             <td><?php foreach($all_pinjam as $f){
                         if($kembali['id_aset_pinjam'] == $f['id_aset_pinjam']){
                             echo $f['keterangan'];
                         }
                 }?></td>
-            <!-- <td style="text-align:center" width="200px">
-                <a href="barang_aset_pinjam/detail/<?php echo $row->id_aset_pinjam ?>" class="btn btn-info btn-sm">detail</a>
-                <a href="barang_aset_pinjam/delete/<?php echo $row->id_aset_pinjam ?>" class="btn btn-danger btn-sm">delete</a>
+           <!--  <td style="text-align:center" width="200px">
+                <a href="barang_aset_kembali/laporan/<?php echo $row->id_aset_kembali ?>" target="_blank" class="btn btn-info btn-sm">cetak</a>
+               
+                <a href="<?php echo site_url('ruang_detail/cetak_download/'.$row->id_ruang); ?>"  target="_blank" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
+                <a href="<?php echo site_url('barang_aset_kembali/laporan/'.$kembali['id_aset_kembali']); ?>"  target="_blank" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Cetak</a>
                 
             </td> -->
         </tr>
@@ -82,6 +91,7 @@
             ?>
 
         </table>
+        <a href="<?php echo ('barang_aset_kembali/cetak/'.$kembali['id_aset_kembali']) ?>" target="_blank" class="btn btn-info btn-sm">cetak</a>
         </div>
 </div>
 <!-- <a href="<?php echo site_url ('barang_aset_kembali/kembali/'.$pinjam['id_aset_pinjam']);?>" class="btn btn-success btn-sm">kembalikan</a> -->

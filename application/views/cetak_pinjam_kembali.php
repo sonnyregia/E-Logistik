@@ -22,48 +22,30 @@ $rs = $data->row();
 		<table class="table table-bordered" style="margin-bottom: 10px" >
 			<thead>
 				<tr>
-					<th>No.</th>
+					<th>No Kartu</th>
+					<th>Tanggal Pinjam</th>
+					<th>Tanggal Kembali</th>
+					<th>Nama Pegawai</th>
 					<th>Kode Aset</th>
 					<th>NUP</th>
-					<th>Nama Aset</th>
-					<th>Uraian</th>
-					<th>Penguasaan Barang</th>
-					<th>Tahun Peroleh</th>
-					<th>Status</th>
-					
+					<th>Nama Aset</th>					
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
-				$sql = $this->db->query("SELECT * FROM barang_aset as a,barang_aset_sub as b where a.id_aset=b.id_aset and a.id_aset='$rs->id_aset' ");
+				$sql = $this->db->query("SELECT * FROM barang_aset_kembali as d, barang_aset_pinjam as c, kartu as e,barang_aset as a,barang_aset_sub as b where d.id_aset=a.id_aset and d.id_aset_sub=a.id_aset_sub and d.id_aset_pinjam=c.id_aset_pinjam and d.id_kartu=e.id_kartu and a.id_aset_kembali='$rs->id_aset_kembali' ");
 				$no = 1;
 				foreach ($sql->result() as $row) {
 				 ?>
 				<tr>
-					<td><?php echo $no++; ?></td>
+					<td><?php echo $row->nomor_kartu; ?></td>
+					<td><?php echo $row->tanggal_balik; ?></td>
+					<td><?php echo $row->tanggal_pinjam; ?></td>
+					<td><?php echo $row->nama_pegawai; ?></td>
 					<td><?php echo $row->kode_aset; ?></td>
 					<td><?php echo $row->seri; ?></td>
 					
 					<td><?php echo $row->nama_aset; ?></td>
-					<td><?php echo $row->detail_aset; ?></td>
-					<td><?php echo $row->penguasaan; ?></td>
-					<td><?php echo $row->tahun; ?></td>
-					<td><?php $grup=$row->grup;
-             if($grup==1){
-                echo '<span class="label label-success">Tersedia</span>';
-             }elseif($grup==2){
-                echo '<span class="label label-info">Dilokasi</span>';  
-             }
-             elseif($grup==3){
-                echo '<span class="label label-primary">Dipinjamkan</span>';  
-             }
-             elseif($grup==2){
-                echo '<span class="label label-warning">Dihapus</span>';  
-             }
-             else{
-                echo '<span class="label label-danger">Rusak</span>';
-            }
-              ?></td>
 				</tr>
 				<?php } ?>
 			</tbody>

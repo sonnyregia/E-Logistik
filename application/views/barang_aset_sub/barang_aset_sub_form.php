@@ -60,10 +60,7 @@
             <label for="varchar">Penguasan Barang <?php echo form_error('penguasaan') ?></label>
             <input type="text" class="form-control" name="penguasaan" id="penguasaan" placeholder="Penguasaan" value="<?php echo $penguasaan; ?>" />
         </div>
-        <div class="form-group">
-            <label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
-            <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
-        </div>
+       
         <input type="hidden" name="id_aset_sub" value="<?php echo $id_aset_sub; ?>" />
         <input type="hidden" name="grup" value="<?php echo $grup; ?>" />
         <input type="hidden" name="tanggal_input" value="<?php echo date('d F Y') ?>">  

@@ -24,7 +24,8 @@
                 <th>Pegawai</th>
         <th>Jabatan</th>
         <th>Aset Barang</th>
-<!--         <th>Seri Aset Barang</th> -->
+        
+         <th>NUP</th> 
        <!--  <th>Status</th> -->
         <th>Keterangan</th>
       <!--   <th>Action</th> -->
@@ -54,19 +55,21 @@
             <td><?php echo $pinjam['jabatan'] ;?></td>
             <td><?php  
                             foreach($all_barang_aset as $b){
+                                
                                 if($pinjam['id_aset'] == $b['id_aset']){
-                                    echo $b['nama_aset'].' | '.$pinjam['id_aset'];
+                                    echo $b['nama_aset'] ;
+                                    }    
+                            }
+                        ?></td>
+             <td><?php  
+                            foreach($all_barang_sub as $d){
+                                if($pinjam['id_aset_sub'] == $d['id_aset_sub']){
+                                    echo $d['seri'];
                                 }
                             }
                         ?></td>
+           
              <!-- <td><?php echo $row->seri ?></td> -->
-        <!--      <td><?php  
-                            foreach($all_barang_sub as $d){
-                                if($pinjam['id_aset_sub'] == $d['id_aset_sub']){
-                                    echo $b['grup'];
-                                }
-                            }
-                        ?></td> -->
             <td><?php echo $pinjam['keterangan'] ;?></td>
             <!-- <td style="text-align:center" width="200px">
                 <a href="barang_aset_pinjam/detail/<?php echo $row->id_aset_pinjam ?>" class="btn btn-info btn-sm">detail</a>

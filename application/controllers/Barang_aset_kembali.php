@@ -122,69 +122,23 @@ class Barang_aset_kembali extends CI_Controller
 
     }
     
-    public function create() 
+   public function cetak($kode_cetak)
     {
+        
         $data = array(
-            'button' => 'Create',
-            'action' => site_url('Barang_aset_kembali/create_action'),
-         'id_aset_kembali' => set_value('id_aset_kembali'),
-         'kode_kembali' => $this->No_urut->buat_kode_kembali(),
-         'kode_pinjam' => set_value('kode_pinjam'),
-        'kode_aset' => set_value('kode_aset'),
-        'nama_pegawai' => set_value('nama_pegawai'),
-        'jabatan' => set_value('jabatan'),
-        'keterangan' => set_value('keterangan'),
-        'seri' => set_value('seri'),
-        'tanggal_balik' => set_value('tanggal_balik'),
-        'konten' => 'Barang_aset_kembali/barang_aset_kembali_form',
-        'judul' => 'Aset Kembali',
-        // 'kodeurut' => $this->No_urut->buat_kode_pinjam(),
-    );
-        $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
-        $data['all_barang_aset_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();
-        $this->load->view('v_index', $data);
+            'data' => $this->db->query("SELECT * FROM barang_aset_kembali where id_aset_kembali='$kode_cetak'"),
+        );
+        $this->load->view('print_kembali',$data);
     }
     
-    public function create_action() 
-     {
-         $this->_rules();
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
-
-        // $nmfile = "barang_".time();
-        // $config['upload_path'] = './image/barang';
-        // $config['allowed_types'] = 'jpg|png';
-        // $config['max_size'] = '20000';
-        // $config['file_name'] = $nmfile;
-        // // load library upload
-        // $this->load->library('upload', $config);
-        // // upload gambar 1
-        // $this->upload->do_upload('foto_barang');
-        // $result1 = $this->upload->data();
-        // $result = array('gambar'=>$result1);
-        // $dfile = $result['gambar']['file_name'];
-
-            $data = array(
-        'kode_kembali' => $this->input->post('kode_kembali',TRUE),
-        'kode_pinjam' => $this->input->post('kode_pinjam',TRUE),
-        'kode_aset' => $this->input->post('kode_aset',TRUE),
-        'nama_pegawai' => $this->input->post('nama_pegawai',TRUE),
-        'jabatan' => $this->input->post('jabatan',TRUE),
-        'keterangan' => $this->input->post('keterangan',TRUE),
-        'seri' => $this->input->post('seri',TRUE),
-        'tanggal_balik' => $this->input->post('tanggal_balik',TRUE),
-        // 'id_merk' => $this->input->post('id_merk',TRUE),
-        // 'foto_barang' => $dfile,
+   public function laporan(){
+        $data = array(
+            'data' => $this->db->query("SELECT * FROM barang_aset_kembali where id_aset_kembali='$kode_cetak'"),
         );
-
-            $this->Barang_aset_kembali_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
-
-            redirect(site_url('Barang_aset_kembali'));
-        }
+        $this->load->view('cetak_pinjam_kembali', $data);
     }
+      
+    
 
     public function delete($id) 
     {

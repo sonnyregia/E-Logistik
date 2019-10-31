@@ -29,6 +29,15 @@
             <input type="text" class="form-control" name="detail_aset" placeholder="Uraian Aset" value="<?php echo $barang['detail_aset']; ?>" />
         </div>
         <div class="form-group">
+            <label for="varchar">Pengusaan Barang <?php echo form_error('penguasaan') ?></label>
+            <input type="text" class="form-control" name="penguasaan" placeholder="Pengusaan Barang" value="<?php echo $barang['penguasaan']; ?>" />
+        </div>
+        <div class="form-group">
+            <label for="varchar">Tahun Peroleh <?php echo form_error('tahun') ?></label>
+            <input type="text" class="form-control" name="tahun" placeholder="Tahun Peroleh" value="<?php echo $barang['tahun']; ?>" />
+        </div>
+
+        <div class="form-group">
                         <label for="id_merk_aset" class="control-label"><span class="text-danger"></span>Merk</label>
                    <!--      <div class="form-group"> -->
                             <select name="id_merk_aset" class="js-example-basic-single form-control">

@@ -39,7 +39,7 @@ class Barang_aset_sub_model extends CI_Model
     $this->db->or_like('merk_aset', $q);
     $this->db->or_like('satuan_aset', $q);
     $this->db->or_like('penguasaan', $q);
-    $this->db->or_like('keterangan', $q);
+    
 	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -55,7 +55,7 @@ class Barang_aset_sub_model extends CI_Model
     $this->db->or_like('merk_aset', $q);
     $this->db->or_like('satuan_aset', $q);
     $this->db->or_like('penguasaan', $q);
-    $this->db->or_like('keterangan', $q);
+    
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

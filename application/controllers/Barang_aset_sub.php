@@ -43,7 +43,7 @@ class Barang_aset_sub extends CI_Controller
         'id_merk_aset' => set_value('id_merk_aset'),
         'penguasaan' => set_value('penguasaan'),
         'detail_aset' => set_value('detail_aset'),
-        'keterangan' => set_value('keterangan'),
+        
         'id_satuan_aset' => set_value('id_satuan_aset'),
          'grup' => set_value('grup'),
         // 'gambar' => set_value('gambar'),
@@ -93,7 +93,7 @@ class Barang_aset_sub extends CI_Controller
         'id_merk_aset' => $this->input->post('id_merk_aset',TRUE),
         // // 'gambar' => $pathBarcode,
         'penguasaan' => $this->input->post('penguasaan',TRUE),
-        'keterangan' => $this->input->post('keterangan',TRUE),
+        
         'id_satuan_aset' => $this->input->post('id_satuan_aset',TRUE),
 		// 'foto_barang' => $dfile,
 	    );
@@ -119,6 +119,8 @@ class Barang_aset_sub extends CI_Controller
                 'detail_aset' => $this->input->post('detail_aset'),
                 'grup' => $this->input->post('grup'),
                 'id_merk_aset' => $this->input->post('id_merk_aset'),
+                'penguasaan' => $this->input->post('penguasaan'),
+                'tahun' => $this->input->post('tahun'),
                 'id_satuan_aset' => $this->input->post('id_satuan_aset'),
                 );
                 $this->Barang_aset_sub_model->update_barang($id_aset_sub,$params);

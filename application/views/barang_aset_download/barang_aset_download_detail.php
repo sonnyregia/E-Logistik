@@ -21,6 +21,7 @@ $rs = $data->row();
 					<th>NUP</th>
 					<th>Nama Aset</th>
 					<th>Uraian</th>
+					<th>Penguasaan Barang</th>
 					<th>Tahun Peroleh</th>
 					<th>Status</th>
 					<th>Action</th>
@@ -39,6 +40,7 @@ $rs = $data->row();
 					
 					<td><?php echo $row->nama_aset; ?></td>
 					<td><?php echo $row->detail_aset; ?></td>
+					<td><?php echo $row->penguasaan; ?></td>
 					<td><?php echo $row->tahun; ?></td>
 					<td><?php $grup=$row->grup;
              if($grup==1){
@@ -46,8 +48,14 @@ $rs = $data->row();
              }elseif($grup==2){
                 echo '<span class="label label-info">Dilokasi</span>';  
              }
+             elseif($grup==3){
+                echo '<span class="label label-primary">Dipinjamkan</span>';  
+             }
+             elseif($grup==2){
+                echo '<span class="label label-warning">Dihapus</span>';  
+             }
              else{
-                echo '<span class="label label-danger">Dipinjamkan</span>';
+                echo '<span class="label label-danger">Rusak</span>';
             }
               ?></td>
 					<td>
