@@ -74,8 +74,8 @@ class Barang extends CI_Controller
 	    'kode_barang' => $this->No_urut->buat_kode_barang(),
 	    'nama_barang' => set_value('nama_barang'),
         'stok' => set_value('stok'),
-        'satuan_barang' => set_value('satuan_barang'),
-        'merk_barang' => set_value('merk_barang'),
+        'id_satuan' => set_value('id_satuan'),
+        'id_merk' => set_value('id_merk'),
         'konten' => 'barang/barang_form',
             'judul' => 'Data Barang',
 	);
@@ -109,8 +109,8 @@ class Barang extends CI_Controller
 		'kode_barang' => $this->input->post('kode_barang',TRUE),
 		'nama_barang' => $this->input->post('nama_barang',TRUE),
         'stok' => $this->input->post('stok',TRUE),
-        'satuan_barang' => $this->input->post('satuan_barang',TRUE),
-        'merk_barang' => $this->input->post('merk_barang',TRUE),
+        'id_satuan' => $this->input->post('id_satuan',TRUE),
+        'id_merk' => $this->input->post('id_merk',TRUE),
 		// 'foto_barang' => $dfile,
 	    );
 
@@ -132,7 +132,7 @@ class Barang extends CI_Controller
 		'kode_barang' => set_value('kode_barang', $row->kode_barang),
 		'nama_barang' => set_value('nama_barang', $row->nama_barang),
         'stok' => set_value('stok', $row->stok),
-        'satuan_barang' => set_value('satuan_barang', $row->satuan_barang),
+        'id_satuan' => set_value('id_satuan', $row->id_satuan),
         'merk_barang' => set_value('merk_barang', $row->merk_barang),
         'konten' => 'barang/barang_form_update',
             'judul' => 'Data Barang',
@@ -159,7 +159,7 @@ class Barang extends CI_Controller
         'kode_barang' => $this->input->post('kode_barang',TRUE),
         'nama_barang' => $this->input->post('nama_barang',TRUE),
         'stok' => $this->input->post('stok',TRUE),
-        'satuan_barang' => $this->input->post('satuan_barang',TRUE),
+        'id_satuan' => $this->input->post('id_satuan',TRUE),
         'merk_barang' => $this->input->post('merk_barang',TRUE),
         );
 
@@ -186,7 +186,7 @@ class Barang extends CI_Controller
         'kode_barang' => $this->input->post('kode_barang',TRUE),
         'nama_barang' => $this->input->post('nama_barang',TRUE),
         'stok' => $this->input->post('stok',TRUE),
-        'satuan_barang' => $this->input->post('satuan_barang',TRUE),
+        'id_satuan' => $this->input->post('id_satuan',TRUE),
         'merk_barang' => $this->input->post('merk_barang',TRUE),
         // 'foto_barang' => $dfile,
         );

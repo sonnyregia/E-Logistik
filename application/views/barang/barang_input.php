@@ -41,7 +41,7 @@
             <input type="text" class="form-control" name="stok" id="stok" placeholder="Stok" value="<?php echo $stok; ?>" />
         </div>
         <input type="hidden" name="id_barang" value="<?php echo $id_barang; ?>" /> 
-        <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
+        <button type="submit" class="btn btn-primary">Tambah</button> 
         <a href="<?php echo site_url('barang') ?>" class="btn btn-default">Cancel</a>
     </form>
 <script type="text/javascript">

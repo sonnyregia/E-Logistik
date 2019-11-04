@@ -9,13 +9,13 @@
         </div>
         <div class="form-group">
             <label for="varchar">Satuan Barang </label>
-            <select name="satuan_barang" class="form-control">
-                <option value="<?php echo $satuan_barang ?>" ><?php echo $satuan_barang ?></option>
+            <select name="id_satuan" class="form-control">
+                <option value="<?php echo $id_satuan ?>" ><?php echo $satuan_barang ?></option>
                 <?php
                 $sql = $this->db->get('satuan_barang');
                 foreach ($sql->result() as $row){
                     ?>
-                <option value="<?php echo $row->satuan_barang ?>"><?php echo $row->satuan_barang ?></option>
+                <option value="<?php echo $row->id_satuan ?>"><?php echo $row->satuan_barang ?></option>
                 <?php } ?>
             </select>
         </div>

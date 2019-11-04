@@ -68,7 +68,7 @@ class Merk_barang_model extends CI_Model
 
     function get_all_merk()
     {
-        $this->db->order_by('merk_barang', 'asc');
+        $this->db->order_by('id_merk', 'asc');
         return $this->db->get('merk_barang')->result_array();
     }
 

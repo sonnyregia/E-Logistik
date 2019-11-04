@@ -29,7 +29,7 @@ $rs = $data->row();
 					<th>Uraian</th>
 					<th>Penguasaan Barang</th>
 					<th>Tahun Peroleh</th>
-					<th>Statuus</th>
+					<th>Status</th>
 					
 				</tr>
 			</thead>

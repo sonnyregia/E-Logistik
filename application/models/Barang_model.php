@@ -29,6 +29,11 @@ class Barang_model extends CI_Model
         return $this->db->get($this->table)->row();
     }
     
+    function add_barang($params)
+    {
+        $this->db->insert('barang',$params);
+        return $this->db->insert_id();
+    }
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_barang', $q);
@@ -72,7 +77,7 @@ class Barang_model extends CI_Model
 
      function get_all_barang()
     {
-        $this->db->order_by('nama_barang', 'asc');
+        $this->db->order_by('id_barang', 'asc');
         return $this->db->get('barang')->result_array();
     }
     

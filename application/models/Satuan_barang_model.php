@@ -68,7 +68,7 @@ class Satuan_barang_model extends CI_Model
 
      function get_all_satuan()
     {
-        $this->db->order_by('satuan_barang', 'asc');
+        $this->db->order_by('id_satuan', 'asc');
         return $this->db->get('satuan_barang')->result_array();
     }
 

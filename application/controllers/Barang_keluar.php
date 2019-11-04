@@ -11,40 +11,19 @@ class Barang_keluar extends CI_Controller
         $this->load->model('Barang_keluar_model');
         $this->load->model('Barang_model');
         $this->load->model('Merk_barang_model');
+        $this->load->model('Satuan_barang_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $q = urldecode($this->input->get('q', TRUE));
-        $start = intval($this->input->get('start'));
-        
-        if ($q <> '') {
-            $config['base_url'] = base_url() . 'barang_keluar/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'barang_keluar/index.html?q=' . urlencode($q);
-        } else {
-            $config['base_url'] = base_url() . 'barang_keluar/index.html';
-            $config['first_url'] = base_url() . 'barang_keluar/index.html';
-        }
-
-        $config['per_page'] = 10;
-        $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->Barang_keluar_model->total_rows($q);
-        $barang_keluar = $this->Barang_keluar_model->get_limit_data($config['per_page'], $start, $q);
+        $data['judul'] = 'Barang Keluar';
+        $data['konten'] = 'barang_keluar/barang_keluar_list';
+        $data['all_keluar'] = $this->Barang_keluar_model->get_all_keluar();
         $data['all_barang'] = $this->Barang_model->get_all_barang();
+        $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
+        $data['all_satuan'] = $this->Satuan_barang_model->get_all_satuan();
 
-        $this->load->library('pagination');
-        $this->pagination->initialize($config);
-
-        $data = array(
-            'barang_keluar_data' => $barang_keluar,
-            'q' => $q,
-            'pagination' => $this->pagination->create_links(),
-            'total_rows' => $config['total_rows'],
-            'start' => $start,
-            'konten' => 'barang_keluar/barang_keluar_list',
-            'judul' => 'Data Barang Keluar',
-        );
         $this->load->view('v_index', $data);
     }
 
@@ -73,22 +52,34 @@ class Barang_keluar extends CI_Controller
 
     public function create() 
     {
-        $data = array(
-            'button' => 'Create',
-            'action' => site_url('barang_keluar/create_action'),
-	    'id_barang_keluar' => set_value('id_barang_keluar'),
-	    'kode_barang' => set_value('kode_barang'),
-	    'tanggal' => set_value('tanggal'),
-	    'jumlah' => set_value('jumlah'),
-        'pegawai' => set_value('pegawai'),
-        'bidang' => set_value('bidang'),
-        'konten' => 'barang_keluar/barang_keluar_form',
-            'judul' => 'Data Barang Keluar',
+        $this->form_validation->set_rules('id_barang','Barang','required');
+        if($this->form_validation->run())     
+        { 
+
+        $params = array(
+	    'id_barang_keluar' => $this->input->post('id_barang_keluar'),
+	    'id_barang' => $this->input->post('id_barang'),
+        'id_merk' => $this->input->post('id_merk'),
+	    'tanggal' => $this->input->post('tanggal'),
+	    'jumlah' => $this->input->post('jumlah'),
+        'id_satuan' => $this->input->post('id_satuan'),
+        'pegawai' => $this->input->post('pegawai'),
+        'nip' => $this->input->post('nip'),
+        'bidang' => $this->input->post('bidang'),
+
 	);
+        $keluar_id = $this->Barang_keluar_model->add_keluar($params);
+        redirect('barang_keluar');
+    }else{
+
         $data['all_barang'] = $this->Barang_model->get_all_barang();
+        $data['all_keluar'] = $this->Satuan_barang_model->get_all_satuan();
         $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
-        $this->load->view('v_index', $data);
+        $data['judul'] = 'Form Input Data';
+        $data['konten'] = 'barang_keluar/barang_keluar_input';
+        $this->load->view('v_index', $data);   
     }
+}
     
     public function create_action() 
     {
@@ -170,19 +161,32 @@ class Barang_keluar extends CI_Controller
         }
     }
 
-    public function _rules() 
-    {
-	$this->form_validation->set_rules('kode_barang', 'kode barang', 'trim|required');
-	$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
-	$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
-    $this->form_validation->set_rules('pegawai', 'Pegawai', 'trim|required');
-    $this->form_validation->set_rules('bidang', 'Bidang', 'trim|required');
+ //    public function _rules() 
+ //    {
+	// $this->form_validation->set_rules('kode_barang', 'kode barang', 'trim|required');
+	// $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+	// $this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
+ //    $this->form_validation->set_rules('pegawai', 'Pegawai', 'trim|required');
+ //    $this->form_validation->set_rules('bidang', 'Bidang', 'trim|required');
 
-	$this->form_validation->set_rules('id_barang_keluar', 'id_barang_keluar', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
-    }
+	// $this->form_validation->set_rules('id_barang_keluar', 'id_barang_keluar', 'trim');
+	// $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+ //    }
 
 }
+
+public function cek_data()
+    {
+        $id_barang = $this->input->post('id_barang');
+        $cek = $this->db->query("SELECT * FROM barang as b, merk_barang as c, satuan_barang as s WHERE b.id_merk=c.id_merk and b.id_satuan=s.id_satuan and b.id_barang='$id_barang'")->row();
+        $data = array(
+            'id_barang' => $cek->id_barang,
+            'id_merk' => $cek->id_merk,
+            'id_satuan' => $cek->id_satuan,
+        );
+        echo json_encode($data);
+    }
+
 
 /* End of file Barang_keluar.php */
 /* Location: ./application/controllers/Barang_keluar.php */

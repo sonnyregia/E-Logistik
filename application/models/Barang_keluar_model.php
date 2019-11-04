@@ -34,6 +34,12 @@ class Barang_keluar_model extends CI_Model
         $this->db->order_by('id_barang_keluar', 'desc');
         return $this->db->get('barang_keluar')->result_array();
     }
+
+    function add_keluar($params)
+    {
+        $this->db->insert('barang_keluar',$params);
+        return $this->db->insert_id();
+    }
     
     // get total rows
     function total_rows($q = NULL) {

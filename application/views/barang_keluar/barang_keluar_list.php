@@ -1,35 +1,13 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<div class="row" style="margin-bottom: 10px">
-            <div class="col-md-4">
-                <?php echo anchor(site_url('barang_keluar/create'),'Create', 'class="btn btn-primary"'); ?>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="margin-top: 8px" id="message">
-                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-                </div>
-            </div>
-            <div class="col-md-1 text-right">
-            </div>
-            <div class="col-md-3 text-right">
-                <form action="<?php echo site_url('barang_keluar/index'); ?>" class="form-inline" method="get">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-                        <span class="input-group-btn">
-                            <?php 
-                                if ($q <> '')
-                                {
-                                    ?>
-                                    <a href="<?php echo site_url('barang_keluar'); ?>" class="btn btn-default">Reset</a>
-                                    <?php
-                                }
-                            ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="row">
+<div class="col-md-4">
+        <a href="barang_keluar/create" class="btn btn-primary">Tambah</a>
+        <!-- <a href="app/export_penjualan" target="_blank" class="btn btn-primary">Export</a> -->
+    </div>
+    <div class="col-md-4"></div>
+     <div class="col-md-4"></div><br><br><br>
+     <div class="col-md-12">
         <table class="table table-bordered" style="margin-bottom: 10px" id="selector">
     <tr>
              </table>
@@ -37,30 +15,48 @@
         <thead>
             <tr>
                 <th>No</th>
-        <th>Kode Barang</th>
-        <th>Tgl Keluar</th>
+        <th>Kode Barang | Nama Barang</th>
+        <th>Merk</th>
+        <th>Tanggal Keluar</th>
         <th>Jumlah</th>
+        <th>Satuan</th>
         <th>Pegawai</th>
+        <th>NIP</th>
         <th>Bidang</th>
         <th>Action</th>
             </tr>
         </thead>
         <tbody><?php
-            foreach ($barang_keluar_data as $barang_keluar)
+            foreach ($all_keluar as $keluar)
             {
                 ?>
                 <tr>
             <td width="80px"><?php echo ++$start ?></td>
-            <td><?php echo $barang_keluar->kode_barang ?></td>
-            <td><?php echo $barang_keluar->tanggal ?></td>
-            <td><?php echo $barang_keluar->jumlah ?></td>
-            <td><?php echo $barang_keluar->pegawai ?></td>
-            <td><?php echo $barang_keluar->bidang ?></td>
+            <td><?php foreach($all_barang as $a){
+                if($keluar['id_barang'] == $a['id_barang']){
+                    echo $keluar['kode_barang'].' | '.['nama_barang'];
+                }
+                }  ?></td>
+            <td><?php foreach($all_merk as $b){
+                if($keluar['id_merk'] == $b['id_merk']){
+                    echo $keluar['merk_barang'];
+                }
+                }  ?></td>
+            <td><?php echo $pinjam['tanggal'] ?></td>
+            <td><?php echo $pinjam['jumlah'] ?></td>
+            <td><?php foreach($all_satuan as $c){
+                if($keluar['id_satuan'] == $c['id_satuan']){
+                    echo $keluar['satuan_barang'];
+                }
+                }  ?></td>
+            <td><?php echo $pinjam['pegawai'] ?></td>
+            <td><?php echo $pinjam['nip'] ?></td>
+            <td><?php echo $pinjam['bidang'] ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
-                echo anchor(site_url('barang_keluar/update/'.$barang_keluar->id_barang_keluar),'Update'); 
+                echo anchor(site_url('barang_keluar/update/'.$barang_keluar['id_barang_keluar']),'Update'); 
                 echo ' | '; 
-                echo anchor(site_url('barang_keluar/delete/'.$barang_keluar->id_barang_keluar),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                echo anchor(site_url('barang_keluar/delete/'.$barang_keluar['id_barang_keluar']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
             </td>
         </tr>
@@ -69,19 +65,13 @@
             ?>
             </tbody>
         </table>
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-                <a href="barang_keluar/cetak/<?php echo $barang_keluar->id_barang_keluar ?>" target="_blank" class="btn btn-success">cetak</a>
         </div>
-            <div class="col-md-6 text-right">
-                <?php echo $pagination ?>
-            </div>
-        </div>
+</div>
         <script type="text/javascript">
        $(document).ready(function() {
           $('#example').dataTable( {
-              "searching": false
+              "searching": true
           } );
         } );
 </script>
+<!-- <a href="barang_keluar/cetak/<?php echo $barang_keluar->id_barang_keluar ?>" target="_blank" class="btn btn-success">cetak</a> -->
