@@ -75,19 +75,15 @@ class Merk_barang extends CI_Controller
     
     public function create_action() 
     {
-        $this->_rules();
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
+        
             $data = array(
-		'merk_barang' => $this->input->post('merk_barang',TRUE),
+		'merk_barang' => $this->input->post('merk_barang'),
 	    );
 
             $this->Merk_barang_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('merk_barang'));
-        }
+        
     }
     
     public function update($id) 
@@ -141,12 +137,12 @@ class Merk_barang extends CI_Controller
         }
     }
 
-    public function _rules() 
-    {
-	$this->form_validation->set_rules('merk_barang', 'merk barang', 'trim|required');
+ //    public function _rules() 
+ //    {
+	// $this->form_validation->set_rules('merk_barang', 'merk barang', 'trim|required');
 
-	$this->form_validation->set_rules('id_merk', 'id_merk', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
-    }
+	// $this->form_validation->set_rules('id_merk', 'id_merk', 'trim');
+	// $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+ //    }
 
 }
