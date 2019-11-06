@@ -55,7 +55,7 @@
             <td><?php echo $barang->stok ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
-                echo anchor(site_url('barang/update/'.$barang->id_barang),'Update'); 
+                echo anchor(site_url('barang/edit/'.$barang->id_barang),'Update'); 
                 echo ' | '; 
                 echo anchor(site_url('barang/delete/'.$barang->id_barang),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>

@@ -120,6 +120,41 @@ class Barang extends CI_Controller
         }
     }
     
+    public function edit($id_barang){
+        $data['barang'] = $this->Barang_model->get_barang($id_barang);
+        if(isset($data['barang']['id_barang']))
+        {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('nama_barang','barang','required');
+            if($this->form_validation->run())
+            {
+            $params = array(
+                'id_barang' => $this->input->post('id_barang'),
+                'kode_barang' => $this->input->post('kode_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'stok' => $this->input->post('stok'),
+                'id_merk' => $this->input->post('id_merk'),
+                'id_satuan' => $this->input->post('id_satuan'),
+                );
+                $this->Barang_model->update_barang($id_barang,$params);
+                redirect('barang');
+            }
+            else
+            {
+                $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
+                $data['all_barang'] = $this->Barang_model->get_all_barang();
+                $data['all_satuan'] = $this->Satuan_barang_model->get_all_satuan();
+
+                $data['judul'] = 'Aset NUP';
+                $data['konten'] = 'barang/barang_edit';
+                $this->load->view('v_index', $data);
+            }
+        }
+        else
+            show_error('The barang you are trying to edit does not exist.');
+    }
+
+
     public function update($id) 
     {
         $row = $this->Barang_model->get_by_id($id);
@@ -132,7 +167,7 @@ class Barang extends CI_Controller
 		'kode_barang' => set_value('kode_barang', $row->kode_barang),
 		'nama_barang' => set_value('nama_barang', $row->nama_barang),
         'stok' => set_value('stok', $row->stok),
-        'id_satuan' => set_value('id_satuan', $row->id_satuan),
+        'id_satuan' => set_value('id_satuan', $row->satuan_barang),
         'merk_barang' => set_value('merk_barang', $row->merk_barang),
         'konten' => 'barang/barang_form_update',
             'judul' => 'Data Barang',

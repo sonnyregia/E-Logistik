@@ -34,6 +34,12 @@ class Barang_model extends CI_Model
         $this->db->insert('barang',$params);
         return $this->db->insert_id();
     }
+
+    function get_barang($id_barang)
+    {
+        return $this->db->get_where('barang',array('id_barang'=>$id_barang))->row_array();
+    }
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_barang', $q);
@@ -84,6 +90,12 @@ class Barang_model extends CI_Model
     function get_stok($kode_barang)
     {
         return $this->db->get_where('barang',array('id_barang'=>$kode_barang))->result();
+    }
+
+    function update_barang($id_barang,$params)
+    {
+        $this->db->where('id_barang',$id_barang);
+        return $this->db->update('barang',$params);
     }
 
 }
