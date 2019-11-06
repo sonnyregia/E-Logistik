@@ -34,24 +34,24 @@
             <td width="80px"><?php echo ++$start ?></td>
             <td><?php foreach($all_barang as $a){
                 if($keluar['id_barang'] == $a['id_barang']){
-                    echo $keluar['kode_barang'].' | '.['nama_barang'];
+                    echo $a['kode_barang'].' | '.$a['nama_barang'];
                 }
                 }  ?></td>
             <td><?php foreach($all_merk as $b){
                 if($keluar['id_merk'] == $b['id_merk']){
-                    echo $keluar['merk_barang'];
+                    echo $b['merk_barang'];
                 }
                 }  ?></td>
-            <td><?php echo $pinjam['tanggal'] ?></td>
-            <td><?php echo $pinjam['jumlah'] ?></td>
+            <td><?php echo $keluar['tanggal'] ?></td>
+            <td><?php echo $keluar['jumlah'] ?></td>
             <td><?php foreach($all_satuan as $c){
                 if($keluar['id_satuan'] == $c['id_satuan']){
-                    echo $keluar['satuan_barang'];
+                    echo $c['satuan_barang'];
                 }
                 }  ?></td>
-            <td><?php echo $pinjam['pegawai'] ?></td>
-            <td><?php echo $pinjam['nip'] ?></td>
-            <td><?php echo $pinjam['bidang'] ?></td>
+            <td><?php echo $keluar['pegawai'] ?></td>
+            <td><?php echo $keluar['nip'] ?></td>
+            <td><?php echo $keluar['bidang'] ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
                 echo anchor(site_url('barang_keluar/update/'.$barang_keluar['id_barang_keluar']),'Update'); 

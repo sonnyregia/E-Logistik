@@ -57,7 +57,7 @@ class Barang_keluar extends CI_Controller
         { 
 
         $params = array(
-	    'id_barang_keluar' => $this->input->post('id_barang_keluar'),
+	    // 'id_barang_keluar' => $this->input->post('id_barang_keluar'),
 	    'id_barang' => $this->input->post('id_barang'),
         'id_merk' => $this->input->post('id_merk'),
 	    'tanggal' => $this->input->post('tanggal'),
@@ -73,7 +73,7 @@ class Barang_keluar extends CI_Controller
     }else{
 
         $data['all_barang'] = $this->Barang_model->get_all_barang();
-        $data['all_keluar'] = $this->Satuan_barang_model->get_all_satuan();
+        $data['all_satuan'] = $this->Satuan_barang_model->get_all_satuan();
         $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
         $data['judul'] = 'Form Input Data';
         $data['konten'] = 'barang_keluar/barang_keluar_input';
@@ -173,9 +173,7 @@ class Barang_keluar extends CI_Controller
 	// $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
  //    }
 
-}
-
-public function cek_data()
+    public function cek_data()
     {
         $id_barang = $this->input->post('id_barang');
         $cek = $this->db->query("SELECT * FROM barang as b, merk_barang as c, satuan_barang as s WHERE b.id_merk=c.id_merk and b.id_satuan=s.id_satuan and b.id_barang='$id_barang'")->row();
@@ -186,6 +184,9 @@ public function cek_data()
         );
         echo json_encode($data);
     }
+}
+
+    
 
 
 /* End of file Barang_keluar.php */
