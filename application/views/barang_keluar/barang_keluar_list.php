@@ -56,7 +56,7 @@
                 <?php 
                 echo anchor(site_url('barang_keluar/edit/'.$keluar['id_barang_keluar']),'Update'); 
                 echo ' | '; 
-                echo anchor(site_url('barang_keluar/delete/'.$barang_keluar['id_barang_keluar']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                echo anchor(site_url('barang_keluar/delete/'.$keluar['id_barang_keluar']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
             </td>
         </tr>
@@ -65,6 +65,7 @@
             ?>
             </tbody>
         </table>
+        <a href="<?php echo ('barang_keluar/cetak/'.$keluar['id_barang_keluar']) ?>" target="_blank" class="btn btn-success">cetak</a>
         </div>
 </div>
         <script type="text/javascript">

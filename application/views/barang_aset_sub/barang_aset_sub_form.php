@@ -5,7 +5,7 @@
         <div class="form-group">
             <!-- <input type="hidden" class="form-control" name="kodeurut" value="<?php echo $kodeurut; ?>" readonly/> -->
         
-            <label for="varchar">Nama Aset <?php echo form_error('nama_aset') ?></label>
+            <label for="varchar">Nama Aset <?php echo form_error('id_aset') ?></label>
             <select name="id_aset" class="js-example-basic-single form-control">
                 <option value="<?php echo $id_aset ?>">Nama Aset</option>
                 <?php 

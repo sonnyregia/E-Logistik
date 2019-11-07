@@ -52,6 +52,8 @@ class Barang_aset_sub extends CI_Controller
 	);
         $this->load->view('v_index', $data);
         $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
+        $data['all_merk_aset'] = $this->Merk_aset_model->get_all_merk();
+        $data['all_satuan_aset'] = $this->Satuan_aset_model->get_all_satuan();
     }
     
     public function create_action() 
@@ -101,7 +103,7 @@ class Barang_aset_sub extends CI_Controller
             $this->Barang_aset_sub_model->insert($data);
             // $this->Kode_urut_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('barang_aset_download'));
+            redirect(site_url('barang_aset_sub'));
         }
     }
 
@@ -257,7 +259,7 @@ class Barang_aset_sub extends CI_Controller
     $this->form_validation->set_rules('id_merk_aset', 'merk aset', 'trim|required');
     $this->form_validation->set_rules('id_satuan_aset', 'satuan aset', 'trim|required');
     $this->form_validation->set_rules('penguasaan', 'penguasaan', 'trim|required');
-    $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+    // $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
     $this->form_validation->set_rules('detail_aset', 'detail_aset', 'trim|required');
 
 	$this->form_validation->set_rules('id_aset_sub', 'id_aset_sub', 'trim');

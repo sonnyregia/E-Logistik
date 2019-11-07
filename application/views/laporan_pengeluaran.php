@@ -22,14 +22,18 @@ header("Content-Disposition: attachment; filename=Laporan-Excel.xls");
             <th>Kode Barang</th>
             <th>Nama Barang</th>
             <th>Tanggal</th>
+
             <th>Jumlah</th>
+            <th>Satuan</th>
             <th>Pegawai</th>
-            <th>Bidang</th>         
+            <th>NIP</th>
+            <th>Bidang</th>
+            <th>Tanda Tangan</th>        
           </tr>
         </thead>
-        <tbody>
+       <tbody>
           <?php 
-          $sql = $this->db->query("SELECT * FROM barang_keluar as a,barang as b where a.kode_barang=b.kode_barang");
+          $sql = $this->db->query("SELECT * FROM barang_keluar as a,barang as b, satuan_barang as d where a.id_barang=b.id_barang and a.id_satuan=d.id_satuan");
           $no = 1;
           foreach ($sql->result() as $row) {
            ?>
@@ -38,8 +42,11 @@ header("Content-Disposition: attachment; filename=Laporan-Excel.xls");
             <td><?php echo $row->kode_barang; ?></td>
             <td><?php echo $row->nama_barang; ?></td>
             <td><?php echo $row->tanggal; ?></td>
+            
             <td><?php echo $row->jumlah; ?></td>
+            <td><?php echo $row->satuan_barang; ?></td>
             <td><?php echo $row->pegawai; ?></td>
+            <td><?php echo $row->nip; ?></td>
             <td><?php echo $row->bidang; ?></td>
           </tr>
           <?php } ?>
