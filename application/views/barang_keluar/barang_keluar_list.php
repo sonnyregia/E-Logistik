@@ -54,7 +54,7 @@
             <td><?php echo $keluar['bidang'] ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
-                echo anchor(site_url('barang_keluar/update/'.$barang_keluar['id_barang_keluar']),'Update'); 
+                echo anchor(site_url('barang_keluar/edit/'.$keluar['id_barang_keluar']),'Update'); 
                 echo ' | '; 
                 echo anchor(site_url('barang_keluar/delete/'.$barang_keluar['id_barang_keluar']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>

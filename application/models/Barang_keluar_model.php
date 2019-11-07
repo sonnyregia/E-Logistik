@@ -40,6 +40,17 @@ class Barang_keluar_model extends CI_Model
         $this->db->insert('barang_keluar',$params);
         return $this->db->insert_id();
     }
+
+    function get_barang($id_barang_keluar)
+    {
+        return $this->db->get_where('barang_keluar',array('id_barang_keluar'=>$id_barang_keluar))->row_array();
+    }
+
+    function update_barang($id_barang_keluar,$params)
+    {
+        $this->db->where('id_barang_keluar',$id_barang_keluar);
+        return $this->db->update('barang_keluar',$params);
+    }
     
     // get total rows
     function total_rows($q = NULL) {
