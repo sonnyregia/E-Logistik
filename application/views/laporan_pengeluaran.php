@@ -33,7 +33,7 @@ header("Content-Disposition: attachment; filename=Laporan-Excel.xls");
         </thead>
        <tbody>
           <?php 
-          $sql = $this->db->query("SELECT * FROM barang_keluar as a,barang as b, satuan_barang as d where a.id_barang=b.id_barang and a.id_satuan=d.id_satuan");
+          $sql = $this->db->query("SELECT * FROM barang_keluar as a,barang as b, satuan_barang as d where a.id_barang=b.id_barang and a.id_satuan=d.id_satuan order by id_barang_keluar");
           $no = 1;
           foreach ($sql->result() as $row) {
            ?>

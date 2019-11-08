@@ -17,36 +17,12 @@ class Barang extends CI_Controller
 
     public function index()
     {
-        $q = urldecode($this->input->get('q', TRUE));
-        $start = intval($this->input->get('start'));
-        
-        if ($q <> '') {
-            $config['base_url'] = base_url() . 'barang/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'barang/index.html?q=' . urlencode($q);
-        } else {
-            $config['base_url'] = base_url() . 'barang/index.html';
-            $config['first_url'] = base_url() . 'barang/index.html';
-        }
-
-        $config['per_page'] = 10;
-        $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->Barang_model->total_rows($q);
-        $barang = $this->Barang_model->get_limit_data($config['per_page'], $start, $q);
-
-        $this->load->library('pagination');
-        $this->pagination->initialize($config);
-
-        $data = array(
-            'barang_data' => $barang,
-            'q' => $q,
-            'pagination' => $this->pagination->create_links(),
-            'total_rows' => $config['total_rows'],
-            'start' => $start,
-            'konten' => 'barang/barang_list',
-            'judul' => 'Data Barang',
-        );
+        $data['judul'] = 'Barang';
+        $data['konten'] = 'barang/barang_list';
+        $data['all_barang'] = $this->Barang_model->get_all_barang();
         $this->load->view('v_index', $data);
     }
+
 
     public function read($id) 
     {
