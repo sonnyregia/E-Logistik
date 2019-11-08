@@ -104,6 +104,42 @@ class Barang_masuk extends CI_Controller
         }
     }
     
+    public function edit($id_barang_masuk){
+        $data['barang'] = $this->Barang_masuk_model->get_barang($id_barang_masuk);
+        if(isset($data['barang']['id_barang_masuk']))
+        {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('supplier','supplier','required');
+            if($this->form_validation->run())
+            {
+            $params = array(
+                'id_barang' => $this->input->post('id_barang'),
+                'id_merk' => $this->input->post('id_merk'),
+                'id_satuan' => $this->input->post('id_satuan'),
+                // 'tanggal' => $this->input->post('tanggal'),
+                // 'jumlah' => $this->input->post('jumlah'),
+                'harga' => $this->input->post('harga'),
+                'supplier' => $this->input->post('supplier'),
+                'invoice' => $this->input->post('invoice'),
+                );
+                $this->Barang_masuk_model->update_barang($id_barang_masuk,$params);
+                redirect('barang_masuk');
+            }
+            else
+            {
+                $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
+                $data['all_barang'] = $this->Barang_model->get_all_barang();
+                $data['all_satuan'] = $this->Satuan_barang_model->get_all_satuan();
+
+                $data['judul'] = 'Edit Barang Masuk';
+                $data['konten'] = 'barang_masuk/barang_masuk_edit';
+                $this->load->view('v_index', $data);
+            }
+        }
+        else
+            show_error('The barang you are trying to edit does not exist.');
+    }
+
     public function update($id) 
     {
         $row = $this->Barang_masuk_model->get_by_id($id);

@@ -40,6 +40,17 @@ class Barang_masuk_model extends CI_Model
         $this->db->insert('barang_masuk',$params);
         return $this->db->insert_id();
     }
+
+    function get_barang($id_barang_masuk)
+    {
+        return $this->db->get_where('barang_masuk',array('id_barang_masuk'=>$id_barang_masuk))->row_array();
+    }
+
+    function update_barang($id_barang_masuk,$params)
+    {
+        $this->db->where('id_barang_masuk',$id_barang_masuk);
+        return $this->db->update('barang_masuk',$params);
+    }
     
     // get total rows
     function total_rows($q = NULL) {

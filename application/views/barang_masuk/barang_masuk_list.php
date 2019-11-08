@@ -54,10 +54,9 @@
             <td><?php echo $masuk['supplier'] ?></td>
             <td style="text-align:center" width="200px">
                 <?php  
+                echo anchor(site_url('barang_masuk/edit/'.$masuk['id_barang_masuk']),'Update'); 
                 echo ' | '; 
-                echo anchor(site_url('barang_masuk/update/'.$barang_masuk->id_barang_masuk),'Update'); 
-                echo ' | '; 
-                echo anchor(site_url('barang_masuk/delete/'.$barang_masuk->id_barang_masuk),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                echo anchor(site_url('barang_masuk/delete/'.$masuk['id_barang_masuk']),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
             </td>
         </tr>
