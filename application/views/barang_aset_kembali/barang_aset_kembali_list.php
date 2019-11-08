@@ -8,7 +8,10 @@
     <div class="col-md-4"></div>
     <div class="col-md-4"></div><br><br><br>
     <div class="col-md-12">
-        <table class="table table-bordered" style="margin-bottom: 10px">
+        <table class="table table-bordered" style="margin-bottom: 10px" id="selector">
+        <tr>
+             </table>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
             <tr>
                 <th>No</th>
                 <th>Nomor kartu</th>
@@ -95,3 +98,10 @@
         </div>
 </div>
 <!-- <a href="<?php echo site_url ('barang_aset_kembali/kembali/'.$pinjam['id_aset_pinjam']);?>" class="btn btn-success btn-sm">kembalikan</a> -->
+        <script type="text/javascript">
+       $(document).ready(function() {
+          $('#example').dataTable( {
+              "searching": true
+          } );
+        } );
+</script>

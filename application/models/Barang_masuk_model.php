@@ -34,6 +34,12 @@ class Barang_masuk_model extends CI_Model
         $this->db->order_by('id_barang_masuk', 'desc');
         return $this->db->get('barang_masuk')->result_array();
     }
+
+    function add_masuk($params)
+    {
+        $this->db->insert('barang_masuk',$params);
+        return $this->db->insert_id();
+    }
     
     // get total rows
     function total_rows($q = NULL) {
