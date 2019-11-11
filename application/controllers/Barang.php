@@ -19,6 +19,8 @@ class Barang extends CI_Controller
     {
         $data['judul'] = 'Barang';
         $data['konten'] = 'barang/barang_list';
+        $data['all_satuan'] = $this->Satuan_barang_model->get_all_satuan();
+        $data['all_merk'] = $this->Merk_barang_model->get_all_merk();
         $data['all_barang'] = $this->Barang_model->get_all_barang();
         $this->load->view('v_index', $data);
     }

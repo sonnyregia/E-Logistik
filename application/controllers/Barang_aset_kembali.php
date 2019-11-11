@@ -20,7 +20,7 @@ class Barang_aset_kembali extends CI_Controller
 
     public function index()
     {   $data['judul'] = 'Aset Kembali Barang';
-        $data['konten'] = 'Barang_aset_kembali/barang_aset_kembali_list';
+        $data['konten'] = 'Barang_aset_kembali/barang_aset_kembali_view';
         $data['all_barang_aset'] = $this->Barang_aset_model->get_all_barang_aset();
         $data['all_pinjam'] = $this->Pinjam_model->get_all_barang_pinjam();
         $data['all_barang_sub'] = $this->Barang_aset_sub_model->get_all_barang_aset_sub();

@@ -17,7 +17,9 @@
                   <th>No</th>
                     <th>Kode Barang</th>
                     <th>Nama Barang</th>
+                    <th>Merk</th>
                     <th>Stok</th>
+                    <th>Satuan</th>
                     <th>Action</th>
             </tr>
         </thead>
@@ -30,12 +32,28 @@
             <td width="80px"><?php echo ++$start ?></td>
             <td><?php echo $barang['kode_barang'] ?></td>
             <td><?php echo $barang['nama_barang'] ?></td>
+            <td><?php  
+                            foreach($all_merk as $a){
+                                
+                                if($barang['id_merk'] == $a['id_merk']){
+                                    echo $a['merk_barang'] ;
+                                    }    
+                            }
+                        ?></td>
             <td><?php echo $barang['stok'] ?></td>
+            <td><?php  
+                            foreach($all_satuan as $b){
+                                
+                                if($barang['id_satuan'] == $b['id_satuan']){
+                                    echo $b['satuan_barang'] ;
+                                    }    
+                            }
+                        ?></td>
             <td style="text-align:center" width="200px">
                 <?php 
                 echo anchor(site_url('barang/edit/'.$barang->id_barang),'Update'); 
-                echo ' | '; 
-                echo anchor(site_url('barang/delete/'.$barang->id_barang),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                // echo ' | '; 
+                // echo anchor(site_url('barang/delete/'.$barang->id_barang),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                 ?>
             </td>
         </tr>
@@ -57,7 +75,7 @@
         <script type="text/javascript">
        $(document).ready(function() {
           $('#example').dataTable( {
-              "searching": false
+              "searching": true
           } );
         } );
 </script>
